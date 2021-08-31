@@ -1,3 +1,7 @@
+# FTC 6981 - Hortonville Robotics
+
+This is the code for the Hortonville Robotics FTC robot.
+
 ## NOTICE
 
 This repository contains the public FTC SDK for the Ultimate Goal (2020-2021) competition season.
