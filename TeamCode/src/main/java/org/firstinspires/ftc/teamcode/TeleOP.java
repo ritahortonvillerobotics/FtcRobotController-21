@@ -103,10 +103,10 @@ public class TeleOP extends OpMode {
     public void loop() {
 
         //Alt Trainmtr
-          mtrFrontRight.setPower(gamepad1.right_stick_y);
-          mtrFrontLeft.setPower(-gamepad1.left_stick_y);
-         mtrBackLeft.setPower(-gamepad1.left_stick_y);
-         mtrBackRight.setPower(gamepad1.right_stick_y);
+        mtrFrontRight.setPower(Math.abs(gamepad1.right_stick_y)<=.07 ? 0 : gamepad1.right_stick_y);
+        mtrFrontLeft.setPower(Math.abs(gamepad1.left_stick_y)<=.07 ? 0 : -gamepad1.left_stick_y);
+        mtrBackLeft.setPower(Math.abs(gamepad1.left_stick_y)<=.07 ? 0 : -gamepad1.left_stick_y);
+        mtrBackRight.setPower(Math.abs(gamepad1.right_stick_y)<=.07 ? 0 : gamepad1.right_stick_y);
 
 
         // Current 2021 Drive Train
@@ -123,7 +123,7 @@ public class TeleOP extends OpMode {
         //r.setPower("mtrCollect2", gamepad1.left_bumper ? 1 : gamepad1.left_trigger > 0.5 ? -1 : 0);
 
         //Current 2022 Duck Spinner
-        if (gamepad1.b) {
+        /*if (gamepad1.b) {
             DuckSpin.setPower( 0.50);
         }
         else if  (!gamepad1.b) {
@@ -134,6 +134,13 @@ public class TeleOP extends OpMode {
          } else if (!gamepad1.y) {
              DuckSpin.setPower( 0.0);
          }
+*/
+		DuckSpin.setPower(.5*(gamepad1.b ? 1 : 0)-.5*(gamepad1.y ? 1 : 0));
+
+
+
+
+
 
         /*
        // Arm motor: This controls the arm using a motor to wind/unwind a string.
