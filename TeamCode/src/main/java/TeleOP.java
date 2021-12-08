@@ -87,26 +87,9 @@ public class TeleOP extends OpMode {
         mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        }
 
-        initVuforia();
-        initTfod();
-    }
 
-    private void initVuforia() {
-
-        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
-        parameters.cameraDirection = CameraDirection.BACK;
-        //vuforia.ClassFactory.getInstance().createVuforia(parameters);
-
-    }
-
-    private void initTfod() {
-        int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
-                "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        TFObjectDetector.Parameters tfodParameters = new
-                TFObjectDetector.Parameters(tfodMonitorViewId);
-        tfodParameters.minResultConfidence = 0.8f;
 
           /*if (tfod != null) {
 
@@ -135,16 +118,16 @@ public class TeleOP extends OpMode {
               tfod.activate();
           }
       }}*/
-    }
+
     @Override
     public void loop() {
 
 
         //Alt Trainmtr
-        mtrFrontRight.setPower(Math.abs(gamepad1.right_stick_y)*.4 <= .07 ? 0 : gamepad1.right_stick_y);
-        mtrFrontLeft.setPower(Math.abs(gamepad1.left_stick_y)*.4 <= .07 ? 0 : -gamepad1.left_stick_y);
-        mtrBackLeft.setPower(Math.abs(gamepad1.left_stick_y)*.4 <= .07 ? 0 : -gamepad1.left_stick_y);
-        mtrBackRight.setPower(Math.abs(gamepad1.right_stick_y)*.4 <= .07 ? 0 : gamepad1.right_stick_y);
+        mtrFrontRight.setPower(Math.abs(gamepad1.right_stick_y) * .4 <= .07 ? 0 : gamepad1.right_stick_y);
+        mtrFrontLeft.setPower(Math.abs(gamepad1.left_stick_y) * .4 <= .07 ? 0 : -gamepad1.left_stick_y);
+        mtrBackLeft.setPower(Math.abs(gamepad1.left_stick_y) * .4 <= .07 ? 0 : -gamepad1.left_stick_y);
+        mtrBackRight.setPower(Math.abs(gamepad1.right_stick_y) * .4 <= .07 ? 0 : gamepad1.right_stick_y);
         mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -208,6 +191,14 @@ public class TeleOP extends OpMode {
              pullArm.setPower(0.0);
          }
         */
+
+  /*      //Lift Reset
+        //if (gamepad2.right_bumper == true){
+        //  pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+    }
+*/
         //Alternate Arm Code
         if (gamepad2.a == true) {
             pullArm.setTargetPosition(425);
