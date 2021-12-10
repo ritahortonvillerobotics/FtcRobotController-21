@@ -212,7 +212,6 @@ public class TeleOP extends OpMode {
             pullArm.setTargetPosition(1445);
             pullArm.setPower(1);
             pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
         } else if (gamepad2.dpad_up == true) {
             pullArm.setTargetPosition(1940);
             pullArm.setPower(1);
@@ -227,9 +226,13 @@ public class TeleOP extends OpMode {
             pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         } else if (gamepad2.dpad_right == true) {
             pullArm.setPower(-.1);
+        }else if (gamepad2.right_bumper == true){
+            pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         } else {
             pullArm.setPower(0);
         }
+
         //2022 Claw Code
         //Servo is 270 degree 0.00 reprsents full open
         //Servo gamepad x represents closed
