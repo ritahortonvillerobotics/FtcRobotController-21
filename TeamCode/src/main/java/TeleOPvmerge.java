@@ -22,7 +22,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
  @TeleOp(name = "TeleOPTest2022Vision", group = "TeleOp")
 
- public class TeleOPvmerge extends OpMode {
+ public class  TeleOPvmerge extends OpMode {
      private DcMotor DuckSpin;
      private DcMotor mtrFrontRight;
      private DcMotor mtrFrontLeft;
