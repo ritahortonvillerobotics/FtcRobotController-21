@@ -89,7 +89,7 @@ public class TeleOP extends OpMode {
         pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         }
 
-
+    public void loop() {
 
           /*if (tfod != null) {
 
@@ -119,8 +119,6 @@ public class TeleOP extends OpMode {
           }
       }}*/
 
-    @Override
-    public void loop() {
 
 
         //Alt Trainmtr
