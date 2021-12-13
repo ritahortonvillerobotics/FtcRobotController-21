@@ -38,7 +38,7 @@
 
      //TestRobotConfig testRobotConfig = new TestRobotConfig();
      int a = 0;
-//:)
+
      @Override
      public void init() {
          //Restore me
