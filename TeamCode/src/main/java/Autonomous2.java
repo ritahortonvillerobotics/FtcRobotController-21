@@ -1,268 +1,107 @@
- //package org.firstinspires.ftc.teamcode;
+//package org.firstinspires.ftc.teamcode;
 
- import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
- import com.qualcomm.robotcore.eventloop.opmode.OpMode;
- import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
- import com.qualcomm.robotcore.hardware.DcMotor;
- import com.qualcomm.robotcore.hardware.DcMotorSimple;
- import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
- import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
- import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
+import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
+import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 
 //import hortonvillerobotics.FinalRobotConfiguration;
 
 
- @Autonomous(name = "Autonomous2", group = "Autonomous")
- //
- public class Autonomous2 extends OpMode {
-     private DcMotor DuckSpin;
-     private DcMotor mtrFrontRight;
-     private DcMotor mtrFrontLeft;
-     private DcMotor mtrBackRight;
-     private DcMotor mtrBackLeft;
-     private DcMotor pullArm;
-     public Servo claw;
-     private static final String VUFORIA_KEY = "Ae4Y1tr/////AAABmUOIhh5VUERBieW2UEGVyT2AGvBs+tqZimMoeJTBL57NfKJQjp9v+D/teyPEUYRfVkkTnyZEQGfCewAz0dZlwLkfxcfyWDbEBz33yGrmSEZY7WleEqYVt1P3Eewq1wFWHKxosHyETLU+Vs2XfoKtGXJou46WMNSofNvh4CvLU1bYwwA4Yr9nZ7xbgEySOopKhfXujf1XMqKcmgag7jXEj9WaEUY+7ehRq1A8hKtQjYb2YlrKC5zNZSeiBBTBmYjTbl7Zhn1QxYfOPKWlxZ9tD1/6/OwCSAO/nWwXpVYPSWRL7j6cg4vnTpIuS8lOyz/q18zQle O7H59ckS5mhd/KbM21FZRr/fInq5uwCw8Zehga ";
-     //Restore Me
+@Autonomous(name = "Autonomous2", group = "Autonomous")
+//
+public class Autonomous2 extends LinearOpMode {
+    private DcMotor DuckSpin;
+    private DcMotor mtrFrontRight;
+    private DcMotor mtrFrontLeft;
+    private DcMotor mtrBackRight;
+    private DcMotor mtrBackLeft;
+    private DcMotor pullArm;
+    public Servo claw;
+    private static final String VUFORIA_KEY = "Ae4Y1tr/////AAABmUOIhh5VUERBieW2UEGVyT2AGvBs+tqZimMoeJTBL57NfKJQjp9v+D/teyPEUYRfVkkTnyZEQGfCewAz0dZlwLkfxcfyWDbEBz33yGrmSEZY7WleEqYVt1P3Eewq1wFWHKxosHyETLU+Vs2XfoKtGXJou46WMNSofNvh4CvLU1bYwwA4Yr9nZ7xbgEySOopKhfXujf1XMqKcmgag7jXEj9WaEUY+7ehRq1A8hKtQjYb2YlrKC5zNZSeiBBTBmYjTbl7Zhn1QxYfOPKWlxZ9tD1/6/OwCSAO/nWwXpVYPSWRL7j6cg4vnTpIuS8lOyz/q18zQle O7H59ckS5mhd/KbM21FZRr/fInq5uwCw8Zehga ";
+    //Restore Me
      /*Robot r;
      int count = 0;*/
 
 
-     double drivePowerScale = 1;
-     double theta1 = 0;
+    double drivePowerScale = 1;
+    double theta1 = 0;
 
-     boolean isCollecting = false;
-     boolean g1AP = false;
-     boolean g2BL = false;
+    boolean isCollecting = false;
+    boolean g1AP = false;
+    boolean g2BL = false;
 
-     //TestRobotConfig testRobotConfig = new TestRobotConfig();
-     int a = 0;
+    //TestRobotConfig testRobotConfig = new TestRobotConfig();
+    int a = 0;
 
-     @Override
-     public void init() {
-         //Restore me
-         /*
-         r = Robot.getInstance(this, testRobotConfig);
-         r.initialize(this, new TestRobotConfig());
-         r.setDriveRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-         pullArm.setDriveRunMode(DcMotor.RunMode.RUN_WITH_ENCODER);
-          //((DcMotor) r.motors.get("DuckSpin")).setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-         */
+    @Override
+    public void runOpMode() throws InterruptedException {
+        DuckSpin = hardwareMap.dcMotor.get("DuckSpin");
+        mtrFrontRight = hardwareMap.dcMotor.get("mtrFrontRight");
+        mtrFrontLeft = hardwareMap.dcMotor.get("mtrFrontLeft");
+        mtrBackLeft = hardwareMap.dcMotor.get("mtrBackLeft");
+        mtrBackRight = hardwareMap.dcMotor.get("mtrBackRight");
+        pullArm = hardwareMap.dcMotor.get("pullArm");
+        claw = hardwareMap.servo.get("claw");
 
-         mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-         mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-         mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-         mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-         pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-         mtrFrontRight.setZeroPowerBehavior(BRAKE);
-         mtrFrontLeft.setZeroPowerBehavior(BRAKE);
-         mtrBackLeft.setZeroPowerBehavior(BRAKE);
-         mtrBackRight.setZeroPowerBehavior(BRAKE);
-         pullArm.setZeroPowerBehavior(FLOAT);
-         mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-         mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-         mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-         mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-         pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-         }
+        mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        mtrFrontRight.setZeroPowerBehavior(BRAKE);
+        mtrFrontLeft.setZeroPowerBehavior(BRAKE);
+        mtrBackLeft.setZeroPowerBehavior(BRAKE);
+        mtrBackRight.setZeroPowerBehavior(BRAKE);
+        pullArm.setZeroPowerBehavior(FLOAT);
+        mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        waitForStart();
 
+        mtrFrontRight.setPower(-0.4);
+        mtrBackRight.setPower(-0.4);
+        mtrFrontLeft.setPower(0.4);
+        mtrBackLeft.setPower(0.4);
 
-           /*if (tfod != null) {
+        sleep(3000);
 
-               tfod.activate() = true;
-               tfodParameters.inputSize = 320;
-               tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
-               tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABELS);
-           }
-
-           tfodParameters.useObjectTracker = false;
-
-           tfodParameters.minResultConfidence = 0.8f;
-
-           final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
-           final String[] LABELS = {
-                   "Ball",
-                   "Cube",
-                   "Duck",
-                   "Marker"
-
-           };
-           tfod.setZoom(2.5, 16.0 / 9.0);
-
-           if (tfod != null) {
-
-               tfod.activate();
-           }
-       }}*/
-
-     @Override
-
-     public void loop() {
+        mtrFrontRight.setPower(0.0);
+        mtrBackRight.setPower(0.0);
+        mtrFrontLeft.setPower(0.0);
+        mtrBackLeft.setPower(0.0);
+        //opModeIsActive(); * use for looping conditions *
+    }
 
 
-         //Alt Trainmtr
-     //runNow();
-
-
-
-
-
-    mtrFrontRight.setPower(0.0);
-    mtrFrontLeft.setPower(0.0);
-    mtrBackLeft.setPower(0.0);
-    mtrBackRight.setPower(0.0);
-
-         /*mtrFrontRight.setTargetPosition(540);
-         mtrFrontRight.setPower(0.4);
-         mtrFrontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         mtrFrontLeft.setTargetPosition(540);
-         mtrFrontLeft.setPower(0.4);
-         mtrFrontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         mtrBackLeft.setTargetPosition(540);
-         mtrBackLeft.setPower(0.4);
-         mtrBackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         mtrBackRight.setTargetPosition(540);
-         mtrBackRight.setPower(0.4);
-         mtrBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);*/
-
-
-
-         //Alt Train
-         //mtrFrontRight.setPower(gamepad1.right_stick_y);
-         //mtrFrontLeft.setPower(-gamepad1.left_stick_y);
-         //mtrBackLeft.setPower(-gamepad1.left_stick_y);
-         //mtrBackRight.setPower(gamepad1.right_stick_y);
-
-
-         // Current 2021 Drive Train
-         //Restore
-          /*
-          r.setPower("mtrFrontLeft", - gamepad1.left_stick_y);
-         r.setPower("mtrBackLeft", gamepad1.left_stick_y);
-         r.setPower("mtrFrontRight",gamepad1.right_stick_y);
-         r.setPower("mtrBackRight", gamepad1.right_stick_y);
-
- */
-         // Current 2021 Collector Motors
-         // r.setPower("mtrCollect1", gamepad2.left_bumper ? 1 : gamepad2.left_trigger > 0.5 ? -1 : 0);
-         //r.setPower("mtrCollect2", gamepad1.left_bumper ? 1 : gamepad1.left_trigger > 0.5 ? -1 : 0);
-
-         //Current 2022 Duck Spinner
-         if (gamepad1.b) {
-             DuckSpin.setPower(0.50);
-         } else if (!gamepad1.b) {
-             DuckSpin.setPower(0.0);
-         }
-         if (gamepad1.y) {
-             DuckSpin.setPower(-0.50);
-         } else if (!gamepad1.y) {
-             DuckSpin.setPower(0.0);
-         }
-
-         /*
-        // Arm motor: This controls the arm using a motor to wind/unwind a string.
-          pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-           //int encoderCount=pullArm.getCurrentPosition();
-           //int max=encoderCount+0;
-           // if(encoderCount<max)
-           if(gamepad2.a == true){
-               pullArm.setPower(1.0);
-           }
-           else if(!gamepad2.a){
-               pullArm.setPower(0.0);
-          }
-          if (gamepad2.x ==true){
-              pullArm.setPower(-0.1);
-           }
-
-          else if (!gamepad2.x){
-              pullArm.setPower(0.0);
-          }
-         */
-
-   /*      //Lift Reset
-         //if (gamepad2.right_bumper == true){
-         //  pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-         //pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-     }
- */
-         //Alternate Arm Code
-         if (gamepad2.a == true) {
-             pullArm.setTargetPosition(425);
-             pullArm.setPower(1);
-             pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         } else if (gamepad2.b == true) {
-             pullArm.setTargetPosition(960);
-             pullArm.setPower(1);
-             pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         } else if (gamepad2.y == true) {
-             pullArm.setTargetPosition(1445);
-             pullArm.setPower(1);
-             pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         } else if (gamepad2.dpad_up == true) {
-             pullArm.setTargetPosition(1940);
-             pullArm.setPower(1);
-             pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         } else if (gamepad2.dpad_down == true) {
-             pullArm.setTargetPosition(2700);
-             pullArm.setPower(1);
-             pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         } else if (gamepad2.x == true) {
-             pullArm.setTargetPosition(105);
-             pullArm.setPower(1);
-             pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         } else if (gamepad2.dpad_right == true) {
-             pullArm.setPower(-.1);
-         }else if (gamepad2.right_bumper == true){
-             pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-             pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-         } else {
-             pullArm.setPower(0);
-         }
-
-         //2022 Claw Code
-         //Servo is 270 degree 0.00 reprsents full open
-         //Servo gamepad x represents closed
-         //New Servo gamepade x represents open
-         if (gamepad1.a == true) {
-             claw.setPosition(0.00);
-         }
-
-         if (gamepad1.x == true) {
-             claw.setPosition(0.3);
-         }
-         // telemetry2022
-         telemetry.addData("Lift Value: ", pullArm.getCurrentPosition());
-
-         telemetry.update();
-
-     }
-
-
-
-     public  void runNow(DcMotor mtrFrontRight,DcMotor mtrFrontLeft,DcMotor mtrbackRight,DcMotor mtrBACKLeft){
-         int rightTarget = mtrFrontRight.getCurrentPosition() + (int)(30);
-         int rightTarget2 = mtrBackRight.getCurrentPosition() + (int) (30);
-         int leftTarget = mtrFrontLeft.getCurrentPosition() + (int)(30);
-         int leftTarget2 = mtrBackLeft.getCurrentPosition() + (int)(30);
-         mtrFrontRight.setPower(-0.1);
-         mtrFrontLeft.setPower(0.1);
-         mtrBackLeft.setPower(0.1);
-         mtrBackRight.setPower(-0.1);
-         mtrFrontRight.setTargetPosition(rightTarget);
-         mtrFrontLeft.setTargetPosition(leftTarget);
-         mtrBackLeft.setTargetPosition(leftTarget2);
-         mtrBackRight.setTargetPosition(rightTarget2);
-         mtrFrontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         mtrFrontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         mtrBackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-         mtrBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-     }
-     // Vision 2021
+    public void runNow(DcMotor mtrFrontRight, DcMotor mtrFrontLeft, DcMotor mtrbackRight, DcMotor mtrBACKLeft) {
+        int rightTarget = mtrFrontRight.getCurrentPosition() + (int) (30);
+        int rightTarget2 = mtrBackRight.getCurrentPosition() + (int) (30);
+        int leftTarget = mtrFrontLeft.getCurrentPosition() + (int) (30);
+        int leftTarget2 = mtrBackLeft.getCurrentPosition() + (int) (30);
+        mtrFrontRight.setPower(-0.1);
+        mtrFrontLeft.setPower(0.1);
+        mtrBackLeft.setPower(0.1);
+        mtrBackRight.setPower(-0.1);
+        mtrFrontRight.setTargetPosition(rightTarget);
+        mtrFrontLeft.setTargetPosition(leftTarget);
+        mtrBackLeft.setTargetPosition(leftTarget2);
+        mtrBackRight.setTargetPosition(rightTarget2);
+        mtrFrontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        mtrFrontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        mtrBackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        mtrBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+    // Vision 2021
        /*
 
                            List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
@@ -286,10 +125,7 @@
            }*/
 
 
-
-
-
- }
+}
 
 
 //2021 CLAW CODE - RZ & SB 
