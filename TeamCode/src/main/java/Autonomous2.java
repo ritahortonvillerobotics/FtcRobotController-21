@@ -67,13 +67,15 @@ public class Autonomous2 extends LinearOpMode {
         pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         waitForStart();
-
+        driveForward(0.3,100);
+        driveForward(-0.3,100);
         mtrFrontRight.setPower(-0.4);
         mtrBackRight.setPower(-0.4);
         mtrFrontLeft.setPower(0.4);
         mtrBackLeft.setPower(0.4);
 
-        sleep(3000);
+        sleep(300);
+
 
         mtrFrontRight.setPower(0.0);
         mtrBackRight.setPower(0.0);
@@ -83,24 +85,134 @@ public class Autonomous2 extends LinearOpMode {
     }
 
 
-    public void runNow(DcMotor mtrFrontRight, DcMotor mtrFrontLeft, DcMotor mtrbackRight, DcMotor mtrBACKLeft) {
-        int rightTarget = mtrFrontRight.getCurrentPosition() + (int) (30);
-        int rightTarget2 = mtrBackRight.getCurrentPosition() + (int) (30);
-        int leftTarget = mtrFrontLeft.getCurrentPosition() + (int) (30);
-        int leftTarget2 = mtrBackLeft.getCurrentPosition() + (int) (30);
-        mtrFrontRight.setPower(-0.1);
-        mtrFrontLeft.setPower(0.1);
-        mtrBackLeft.setPower(0.1);
-        mtrBackRight.setPower(-0.1);
-        mtrFrontRight.setTargetPosition(rightTarget);
-        mtrFrontLeft.setTargetPosition(leftTarget);
-        mtrBackLeft.setTargetPosition(leftTarget2);
-        mtrBackRight.setTargetPosition(rightTarget2);
-        mtrFrontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        mtrFrontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        mtrBackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        mtrBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    public void driveForward (double power, long timems){
+
+        mtrFrontRight.setPower(-power);
+        mtrBackRight.setPower(-power);
+        mtrFrontLeft.setPower(power);
+        mtrBackLeft.setPower(power);
+
+        sleep(timems);
+
+        mtrFrontRight.setPower(0.0);
+        mtrBackRight.setPower(0.0);
+        mtrFrontLeft.setPower(0.0);
+        mtrBackLeft.setPower(0.0);
+
+
     }
+    public void driveBack (double power, long timems){
+
+        mtrFrontRight.setPower(power);
+        mtrBackRight.setPower(power);
+        mtrFrontLeft.setPower(-power);
+        mtrBackLeft.setPower(-power);
+
+        sleep(timems);
+
+        mtrFrontRight.setPower(0.0);
+        mtrBackRight.setPower(0.0);
+        mtrFrontLeft.setPower(0.0);
+        mtrBackLeft.setPower(0.0);
+
+
+    }
+     public void turnRight (double power, long timems){
+        mtrFrontLeft.setPower(power);
+        mtrBackRight.setPower(power);
+        sleep(timems);
+         mtrFrontRight.setPower(0.0);
+         mtrBackRight.setPower(0.0);
+         mtrFrontLeft.setPower(0.0);
+         mtrBackLeft.setPower(0.0);
+    }
+
+    public void turnLeft (double power, long timems){
+        mtrFrontRight.setPower(-power);
+        mtrBackLeft.setPower(-power);
+        sleep(timems);
+        mtrFrontRight.setPower(0.0);
+        mtrBackRight.setPower(0.0);
+        mtrFrontLeft.setPower(0.0);
+        mtrBackLeft.setPower(0.0);
+    }
+
+    public void arm (int level,long timems){
+        //Alternate Arm Code
+        if (level == 1) {
+            pullArm.setTargetPosition(425);
+            pullArm.setPower(1);
+            pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        } else if (level == 2) {
+            pullArm.setTargetPosition(960);
+            pullArm.setPower(1);
+            pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        } else if (level == 3) {
+            pullArm.setTargetPosition(1445);
+            pullArm.setPower(1);
+            pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        } else if (level == 4) {
+            pullArm.setTargetPosition(1940);
+            pullArm.setPower(1);
+            pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        } else if (level == 5) {
+            pullArm.setTargetPosition(2700);
+            pullArm.setPower(1);
+            pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        } else if (level == 0) {
+            pullArm.setTargetPosition(105);
+            pullArm.setPower(1);
+            pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        } else if (level == -1) {
+            pullArm.setPower(-.1);
+
+           sleep(timems);
+
+            pullArm.setPower(0.00);
+        }
+    }
+
+    public void claw(boolean open){
+
+        if (open == true) {
+            claw.setPosition(0.00);
+        }
+
+        if (open == false) {
+            claw.setPosition(0.3);
+        }
+
+
+    }
+
+    public void duckspinner (boolean clockwise,long timems){
+
+        if (gamepad1.b) {
+            DuckSpin.setPower(0.50);
+        } else if (!gamepad1.b) {
+            DuckSpin.setPower(0.0);
+        }
+        if (gamepad1.y) {
+            DuckSpin.setPower(-0.50);
+        } else if (!gamepad1.y) {
+            DuckSpin.setPower(0.0);
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
     // Vision 2021
        /*
 
