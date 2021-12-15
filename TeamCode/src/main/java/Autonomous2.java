@@ -67,12 +67,33 @@ public class Autonomous2 extends LinearOpMode {
         pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         waitForStart();
-        driveForward(0.3,100);
-        driveForward(-0.3,100);
-        mtrFrontRight.setPower(-0.4);
-        mtrBackRight.setPower(-0.4);
-        mtrFrontLeft.setPower(0.4);
-        mtrBackLeft.setPower(0.4);
+        driveForward(0.4,500);
+        driveBack(0.4,500);
+        turnLeft(.3,300);
+        driveForward(.3,300);
+        turnRight(.3, 500);
+        driveBack(0.3,300);
+        claw(true);
+        claw(false);
+        arm(0,5000);
+        turnRight(.3, 500);
+        arm(1,5000);
+        turnRight(.3, 500);
+        arm(2,5000);
+        turnRight(.3, 500);
+        arm(3,5000);
+        turnRight(.3, 500);
+        turnRight(.3, 500);
+        arm(4,5000);
+        turnRight(.3, 500);
+        arm(5,5000);
+        turnRight(.3, 500);
+        duckspinner(true,500);
+        duckspinner(false,500);
+        //mtrFrontRight.setPower(-0.4);
+        //mtrBackRight.setPower(-0.4);
+        //mtrFrontLeft.setPower(0.4);
+        //mtrBackLeft.setPower(0.4);
 
         sleep(300);
 
@@ -81,6 +102,10 @@ public class Autonomous2 extends LinearOpMode {
         mtrBackRight.setPower(0.0);
         mtrFrontLeft.setPower(0.0);
         mtrBackLeft.setPower(0.0);
+
+
+
+
         //opModeIsActive(); * use for looping conditions *
     }
 
@@ -125,6 +150,7 @@ public class Autonomous2 extends LinearOpMode {
          mtrBackRight.setPower(0.0);
          mtrFrontLeft.setPower(0.0);
          mtrBackLeft.setPower(0.0);
+
     }
 
     public void turnLeft (double power, long timems){
@@ -187,14 +213,13 @@ public class Autonomous2 extends LinearOpMode {
 
     public void duckspinner (boolean clockwise,long timems){
 
-        if (gamepad1.b) {
+        if (clockwise == true) {
             DuckSpin.setPower(0.50);
-        } else if (!gamepad1.b) {
-            DuckSpin.setPower(0.0);
         }
-        if (gamepad1.y) {
+        if (clockwise==false) {
             DuckSpin.setPower(-0.50);
-        } else if (!gamepad1.y) {
+        }
+            sleep(timems);
             DuckSpin.setPower(0.0);
         }
 
@@ -237,7 +262,7 @@ public class Autonomous2 extends LinearOpMode {
            }*/
 
 
-}
+
 
 
 //2021 CLAW CODE - RZ & SB 
