@@ -67,8 +67,22 @@ public class Autonomous2 extends LinearOpMode {
         pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         waitForStart();
-        driveForward(0.4,500);
-        driveBack(0.4,500);
+        driveForward(.1,670);
+        turnLeft(.3,752);
+        driveBack(.1,1200);
+        duckspinner(false,2000);
+        driveForward(.1,778);
+        turnLeft(.1,1375);
+        driveBack(.1,800);
+        turnLeft(.1,525);
+        driveForward(.1,670);
+
+         //driveBack(.1,670);
+        //driveForward(.1, 670);
+        // Method Test
+        //driveForward(0.4,500);
+       /* driveBack(0.4,500);
+
         turnLeft(.3,300);
         driveForward(.3,300);
         turnRight(.3, 500);
@@ -107,6 +121,7 @@ public class Autonomous2 extends LinearOpMode {
 
 
         //opModeIsActive(); * use for looping conditions *
+        */
     }
 
 

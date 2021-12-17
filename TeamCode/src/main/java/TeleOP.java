@@ -1,4 +1,4 @@
- //package org.firstinspires.ftc.teamcode;
+  //package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -122,14 +122,10 @@ public class TeleOP extends OpMode {
 
 
         //Alt Trainmtr
-        mtrFrontRight.setPower(Math.abs(gamepad1.right_stick_y) * .4 <= .07 ? 0 : gamepad1.right_stick_y);
-        mtrFrontLeft.setPower(Math.abs(gamepad1.left_stick_y) * .4 <= .07 ? 0 : -gamepad1.left_stick_y);
-        mtrBackLeft.setPower(Math.abs(gamepad1.left_stick_y) * .4 <= .07 ? 0 : -gamepad1.left_stick_y);
-        mtrBackRight.setPower(Math.abs(gamepad1.right_stick_y) * .4 <= .07 ? 0 : gamepad1.right_stick_y);
-        mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        mtrFrontRight.setPower(Math.abs(gamepad1.right_stick_y * .4) <= .07 ? 0 : gamepad1.right_stick_y);
+        mtrFrontLeft.setPower(Math.abs(gamepad1.left_stick_y * .4) <= .07 ? 0 : -gamepad1.left_stick_y);
+        mtrBackLeft.setPower(Math.abs(gamepad1.left_stick_y * .4) <= .07 ? 0 : -gamepad1.left_stick_y);
+        mtrBackRight.setPower(Math.abs(gamepad1.right_stick_y * .4) <= .07 ? 0 : gamepad1.right_stick_y);
         mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -137,7 +133,7 @@ public class TeleOP extends OpMode {
 
 
         //Alt Train
-        //mtrFrontRight.setPower(gamepad1.right_stick_y);
+         //mtrFrontRight.setPower(gamepad1.right_stick_y);
         //mtrFrontLeft.setPower(-gamepad1.left_stick_y);
         //mtrBackLeft.setPower(-gamepad1.left_stick_y);
         //mtrBackRight.setPower(gamepad1.right_stick_y);
@@ -157,6 +153,10 @@ public class TeleOP extends OpMode {
         //r.setPower("mtrCollect2", gamepad1.left_bumper ? 1 : gamepad1.left_trigger > 0.5 ? -1 : 0);
 
         //Current 2022 Duck Spinner
+        if(gamepad1.b== true && gamepad1.y==true){
+            DuckSpin.setPower(0.00);
+        }
+
         if (gamepad1.b) {
             DuckSpin.setPower(0.50);
         } else if (!gamepad1.b) {
@@ -235,11 +235,11 @@ public class TeleOP extends OpMode {
         //Servo is 270 degree 0.00 reprsents full open
         //Servo gamepad x represents closed
         //New Servo gamepade x represents open
-        if (gamepad1.a == true) {
+        if (gamepad1.a == true && !gamepad1.x == true) {
             claw.setPosition(0.00);
         }
 
-        if (gamepad1.x == true) {
+        if (gamepad1.x == true && !gamepad1.a== true) {
             claw.setPosition(0.3);
         }
         // telemetry2022
