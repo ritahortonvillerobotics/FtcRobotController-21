@@ -65,18 +65,34 @@ public class Autonomous2 extends LinearOpMode {
         mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
+        claw(true);
         waitForStart();
+        claw(false);
+        sleep(2000);
+        arm(1,300);
         driveForward(.1,670);
-        turnLeft(.3,752);
-        driveBack(.1,1200);
+        sleep(2000);
+        turnLeft(.35,875);
+        sleep(2000);
+        driveBack(.087,1200);
+        sleep(2000);
         duckspinner(false,2000);
-        driveForward(.1,778);
-        turnLeft(.1,1375);
+        sleep(2000);
+        driveForward(.1,780);
+        sleep(300);
+        turnRight(.55,900);
+        sleep(1000);
+        driveForward(.1,830);
+        turnLeft(.3,450);
+        sleep(1000);
+        driveBack(.1,780);
+        /*sleep(2000);
         driveBack(.1,800);
+        sleep(2000);
         turnLeft(.1,525);
+        sleep(2000);
         driveForward(.1,670);
-
+        sleep(2000); */
          //driveBack(.1,670);
         //driveForward(.1, 670);
         // Method Test
@@ -229,10 +245,10 @@ public class Autonomous2 extends LinearOpMode {
     public void duckspinner (boolean clockwise,long timems){
 
         if (clockwise == true) {
-            DuckSpin.setPower(0.50);
+            DuckSpin.setPower(0.45);
         }
         if (clockwise==false) {
-            DuckSpin.setPower(-0.50);
+            DuckSpin.setPower(-0.45);
         }
             sleep(timems);
             DuckSpin.setPower(0.0);
