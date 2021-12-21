@@ -82,7 +82,7 @@ public class Autonomous5 extends LinearOpMode {
         arm(1,500);
         driveBack(.1,650);
         turnRight(.1,300);
-        driveBack(.2,900);
+        driveBack(.2,950);
 
         /*sleep(2000);
         driveBack(.1,800);

@@ -1,4 +1,4 @@
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -82,7 +82,7 @@ public class Autonomous6 extends LinearOpMode {
         arm(1,500);
         driveBack(.1,650);
         turnLeft(.1,300);
-        driveBack(.2,900);
+        driveBack(.2,950);
 
         /*sleep(2000);
         driveBack(.1,800);
