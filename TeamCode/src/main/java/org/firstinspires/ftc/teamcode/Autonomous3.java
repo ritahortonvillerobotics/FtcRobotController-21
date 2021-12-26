@@ -1,3 +1,5 @@
+package org.firstinspires.ftc.teamcode;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -11,7 +13,7 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 //import hortonvillerobotics.FinalRobotConfiguration;
 
 
-    @Autonomous(name = "Autonomous3", group = "Autonomous")
+    @Autonomous(name = "org.firstinspires.ftc.teamcode.Autonomous3", group = "Autonomous")
 //
     public class Autonomous3 extends LinearOpMode {
         private DcMotor DuckSpin;

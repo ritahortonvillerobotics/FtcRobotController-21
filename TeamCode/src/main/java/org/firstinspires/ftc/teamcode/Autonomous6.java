@@ -1,3 +1,5 @@
+package org.firstinspires.ftc.teamcode;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -11,9 +13,9 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 //import hortonvillerobotics.FinalRobotConfiguration;
 
 
-@Autonomous(name = "Autonomous5", group = "Autonomous")
+@Autonomous(name = "org.firstinspires.ftc.teamcode.Autonomous6", group = "Autonomous")
 //
-public class Autonomous5 extends LinearOpMode {
+public class Autonomous6 extends LinearOpMode {
     private DcMotor DuckSpin;
     private DcMotor mtrFrontRight;
     private DcMotor mtrFrontLeft;
@@ -69,7 +71,7 @@ public class Autonomous5 extends LinearOpMode {
         arm(4,1000);
         driveForward(.1,1200);
         sleep(2000);
-        turnRight(.5,1100);
+        turnLeft(.5,1100);
         sleep(2000);
         driveForward(.1,800);
         sleep(2000);
@@ -78,10 +80,10 @@ public class Autonomous5 extends LinearOpMode {
         claw(true);
         driveBack(.1,650);
         sleep(1000);
-        turnRight(.5,325);
+        turnLeft(.5,325);
         arm(1,500);
         driveBack(.1,650);
-        turnRight(.1,300);
+        turnLeft(.1,300);
         driveBack(.2,950);
 
         /*sleep(2000);
