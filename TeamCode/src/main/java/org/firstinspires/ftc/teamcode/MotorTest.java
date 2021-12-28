@@ -36,9 +36,9 @@ public class MotorTest extends OpMode {
         }
 
         //run mode options
-        if (gamepad1.a){
+        if (gamepad1.a && !gamepad1.start && !gamepad2.start){
             testMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        }else if(gamepad1.b){
+        }else if(gamepad1.b && !gamepad1.start && !gamepad2.start){
             testMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         }else if(gamepad1.x){
             testMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
