@@ -13,9 +13,9 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 //import hortonvillerobotics.FinalRobotConfiguration;
 
 
-@Autonomous(name = "org.firstinspires.ftc.teamcode.Autonomous5", group = "Autonomous")
+@Autonomous(name = "org.firstinspires.ftc.teamcode.Red1", group = "Autonomous")
 //
-public class Autonomous5 extends LinearOpMode {
+public class Red1 extends LinearOpMode {
     private DcMotor DuckSpin;
     private DcMotor mtrFrontRight;
     private DcMotor mtrFrontLeft;
