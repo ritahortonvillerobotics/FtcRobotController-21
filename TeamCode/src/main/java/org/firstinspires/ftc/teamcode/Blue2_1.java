@@ -41,48 +41,47 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 
         @Override
         public void runOpMode() throws InterruptedException {
-            DuckSpin = hardwareMap.dcMotor.get("DuckSpin");
-            mtrFrontRight = hardwareMap.dcMotor.get("mtrFrontRight");
-            mtrFrontLeft = hardwareMap.dcMotor.get("mtrFrontLeft");
-            mtrBackLeft = hardwareMap.dcMotor.get("mtrBackLeft");
-            mtrBackRight = hardwareMap.dcMotor.get("mtrBackRight");
-            pullArm = hardwareMap.dcMotor.get("pullArm");
-            claw = hardwareMap.servo.get("claw");
+            Robot r = new Robot();
+            r.DuckSpin = hardwareMap.dcMotor.get("DuckSpin");
+            r.mtrFrontRight = hardwareMap.dcMotor.get("mtrFrontRight");
+            r.mtrFrontLeft = hardwareMap.dcMotor.get("mtrFrontLeft");
+            r.mtrBackLeft = hardwareMap.dcMotor.get("mtrBackLeft");
+            r.mtrBackRight = hardwareMap.dcMotor.get("mtrBackRight");
+            r.pullArm = hardwareMap.dcMotor.get("pullArm");
+            r.claw = hardwareMap.servo.get("claw");
 
-            mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            mtrFrontRight.setZeroPowerBehavior(BRAKE);
-            mtrFrontLeft.setZeroPowerBehavior(BRAKE);
-            mtrBackLeft.setZeroPowerBehavior(BRAKE);
-            mtrBackRight.setZeroPowerBehavior(BRAKE);
-            pullArm.setZeroPowerBehavior(FLOAT);
-            mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            claw(true);
+            r.mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            r. mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            r.mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            r.mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            r.pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            r.mtrFrontRight.setZeroPowerBehavior(BRAKE);
+            r.mtrFrontLeft.setZeroPowerBehavior(BRAKE);
+            r.mtrBackLeft.setZeroPowerBehavior(BRAKE);
+            r.mtrBackRight.setZeroPowerBehavior(BRAKE);
+            r.pullArm.setZeroPowerBehavior(FLOAT);
+            r.mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            r.mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            r.mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            r.mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            r.pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            r.claw(true);
             waitForStart();
-            claw(false);
+            r.claw(false);
             sleep(2000);
-            arm(1,300);
-            driveForward(.1,850);
+            r.arm(1,300);
+            r.driveForward(.1,850);
             sleep(2000);
-            turnRight(.55,900);
+            r.turnRight(.55,900);
             sleep(2000);
-            driveBack(.087,1200);
+            r.driveBack(.087,1200);
             sleep(2000);
-            duckspinner(true,2000);
+            r.duckspinner(true,2000);
             sleep(2000);
-            driveForward(.1,780);
+            r.driveForward(.1,780);
             sleep(300);
-            turnLeft(.55,900);
-            sleep(1000);
-            driveForward(.1,880);
-            turnRight(.35,460);
+            //driveForward(.1,880);
+            //turnRight(.35,460);
         /*sleep(2000);
         driveBack(.1,800);
         sleep(2000);
@@ -137,119 +136,6 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
         */
         }
 
-
-        public void driveForward (double power, long timems){
-
-            mtrFrontRight.setPower(-power);
-            mtrBackRight.setPower(-power);
-            mtrFrontLeft.setPower(power);
-            mtrBackLeft.setPower(power);
-
-            sleep(timems);
-
-            mtrFrontRight.setPower(0.0);
-            mtrBackRight.setPower(0.0);
-            mtrFrontLeft.setPower(0.0);
-            mtrBackLeft.setPower(0.0);
-
-
-        }
-        public void driveBack (double power, long timems){
-
-            mtrFrontRight.setPower(power);
-            mtrBackRight.setPower(power);
-            mtrFrontLeft.setPower(-power);
-            mtrBackLeft.setPower(-power);
-
-            sleep(timems);
-
-            mtrFrontRight.setPower(0.0);
-            mtrBackRight.setPower(0.0);
-            mtrFrontLeft.setPower(0.0);
-            mtrBackLeft.setPower(0.0);
-
-
-        }
-        public void turnRight (double power, long timems){
-            mtrFrontLeft.setPower(power);
-            mtrBackRight.setPower(power);
-            sleep(timems);
-            mtrFrontRight.setPower(0.0);
-            mtrBackRight.setPower(0.0);
-            mtrFrontLeft.setPower(0.0);
-            mtrBackLeft.setPower(0.0);
-
-        }
-
-        public void turnLeft (double power, long timems){
-            mtrFrontRight.setPower(-power);
-            mtrBackLeft.setPower(-power);
-            sleep(timems);
-            mtrFrontRight.setPower(0.0);
-            mtrBackRight.setPower(0.0);
-            mtrFrontLeft.setPower(0.0);
-            mtrBackLeft.setPower(0.0);
-        }
-
-        public void arm (int level,long timems){
-            //Alternate Arm Code
-            if (level == 1) {
-                pullArm.setTargetPosition(425);
-                pullArm.setPower(1);
-                pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            } else if (level == 2) {
-                pullArm.setTargetPosition(960);
-                pullArm.setPower(1);
-                pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            } else if (level == 3) {
-                pullArm.setTargetPosition(1445);
-                pullArm.setPower(1);
-                pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            } else if (level == 4) {
-                pullArm.setTargetPosition(1940);
-                pullArm.setPower(1);
-                pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            } else if (level == 5) {
-                pullArm.setTargetPosition(2700);
-                pullArm.setPower(1);
-                pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            } else if (level == 0) {
-                pullArm.setTargetPosition(105);
-                pullArm.setPower(1);
-                pullArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            } else if (level == -1) {
-                pullArm.setPower(-.1);
-
-                sleep(timems);
-
-                pullArm.setPower(0.00);
-            }
-        }
-
-        public void claw(boolean open){
-
-            if (open == true) {
-                claw.setPosition(0.00);
-            }
-
-            if (open == false) {
-                claw.setPosition(0.3);
-            }
-
-
-        }
-
-        public void duckspinner (boolean clockwise,long timems){
-
-            if (clockwise == true) {
-                DuckSpin.setPower(0.45);
-            }
-            if (clockwise==false) {
-                DuckSpin.setPower(-0.45);
-            }
-            sleep(timems);
-            DuckSpin.setPower(0.0);
-        }
 
 
 
