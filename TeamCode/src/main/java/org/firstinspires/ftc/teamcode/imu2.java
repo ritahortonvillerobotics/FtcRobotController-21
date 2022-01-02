@@ -135,10 +135,10 @@ public class imu2 extends LinearOpMode
             aButton = gamepad1.a;
             bButton = gamepad1.b;
             yButton = gamepad1.y;
-
+            xButton = gamepad1.x;
 
             if (yButton) {
-                // backup.
+                // forward
                 //mtrFrontRight.setPower(power);
                 //mtrFrontLeft.setPower(power);
                 //mtrBackLeft.setPower(power);
