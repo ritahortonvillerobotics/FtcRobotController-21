@@ -34,7 +34,36 @@ public class Robot<aButton, bButton, yButton, xButton> {
     public LinearOpMode opMode;
     boolean isFourWheel = false;
 
-
+    public void imuForward() {
+        while (opMode.opModeIsActive()) {
+            // Use gyro to drive in a straight line.
+            correction = checkDirection();
+            mtrFrontLeft.setPower(-imupower - correction);
+            mtrBackLeft.setPower(-imupower - correction);
+            mtrFrontRight.setPower(imupower + correction);
+            mtrBackRight.setPower(imupower + correction);
+            opMode.sleep(500);
+            mtrFrontRight.setPower(0);
+            mtrFrontLeft.setPower(0);
+            mtrBackLeft.setPower(0);
+            mtrBackRight.setPower(0);
+        }
+    }
+    public void imuBack(){
+        while (opMode.opModeIsActive()) {
+            // Use gyro to drive in a straight line.
+            correction = checkDirection();
+            mtrFrontLeft.setPower(imupower - correction);
+            mtrBackLeft.setPower(imupower - correction);
+            mtrFrontRight.setPower(-imupower + correction);
+            mtrBackRight.setPower(-imupower + correction);
+            opMode.sleep(500);
+            mtrFrontRight.setPower(0);
+            mtrFrontLeft.setPower(0);
+            mtrBackLeft.setPower(0);
+            mtrBackRight.setPower(0);
+        }
+    }
     public void imuRight(){
         rotate(-90, imupower);
         mtrFrontRight.setPower(0);
