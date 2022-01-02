@@ -224,4 +224,14 @@ public class Robot {
         mtrBackLeft.setPower(0.0);
         mtrBackRight.setPower(0.0);
     }
+    public void standardBehavior(){
+        mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        mtrFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        mtrFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        mtrFrontRight.setPower(0.0);
+        mtrFrontLeft.setPower(0.0);
+        mtrBackLeft.setPower(0.0);
+        mtrBackRight.setPower(0.0);
+    }
 }
