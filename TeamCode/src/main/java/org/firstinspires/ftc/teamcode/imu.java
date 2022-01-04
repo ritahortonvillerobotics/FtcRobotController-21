@@ -21,13 +21,13 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 
     public class imu extends LinearOpMode
     {
-        private DcMotor DuckSpin;
-        private DcMotor mtrFrontRight;
-        private DcMotor mtrFrontLeft;
-        private DcMotor mtrBackRight;
-        private DcMotor mtrBackLeft;
-        private DcMotor pullArm;
-        public Servo claw;
+        //private DcMotor DuckSpin;
+        //private DcMotor mtrFrontRight;
+        //private DcMotor mtrFrontLeft;
+        //private DcMotor mtrBackRight;
+        //private DcMotor mtrBackLeft;
+        //private DcMotor pullArm;
+        //public Servo claw;
         BNO055IMU               imu;
         Orientation             lastAngles = new Orientation();
         double                  globalAngle, power = .30, correction;
@@ -37,29 +37,29 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
         // called when init button is  pressed.
         @Override
         public void runOpMode() throws InterruptedException {
-            DuckSpin = hardwareMap.dcMotor.get("DuckSpin");
-            mtrFrontRight = hardwareMap.dcMotor.get("mtrFrontRight");
-            mtrFrontLeft = hardwareMap.dcMotor.get("mtrFrontLeft");
-            mtrBackLeft = hardwareMap.dcMotor.get("mtrBackLeft");
-            mtrBackRight = hardwareMap.dcMotor.get("mtrBackRight");
-            pullArm = hardwareMap.dcMotor.get("pullArm");
-            claw = hardwareMap.servo.get("claw");
+            //DuckSpin = hardwareMap.dcMotor.get("DuckSpin");
+            //mtrFrontRight = hardwareMap.dcMotor.get("mtrFrontRight");
+            //mtrFrontLeft = hardwareMap.dcMotor.get("mtrFrontLeft");
+            //mtrBackLeft = hardwareMap.dcMotor.get("mtrBackLeft");
+            //mtrBackRight = hardwareMap.dcMotor.get("mtrBackRight");
+            //pullArm = hardwareMap.dcMotor.get("pullArm");
+            //claw = hardwareMap.servo.get("claw");
 
-            mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            mtrFrontRight.setZeroPowerBehavior(BRAKE);
-            mtrFrontLeft.setZeroPowerBehavior(BRAKE);
-            mtrBackLeft.setZeroPowerBehavior(BRAKE);
-            mtrBackRight.setZeroPowerBehavior(BRAKE);
-            pullArm.setZeroPowerBehavior(FLOAT);
-            mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            //mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            //mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            //mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            //mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            //pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            //mtrFrontRight.setZeroPowerBehavior(BRAKE);
+            //mtrFrontLeft.setZeroPowerBehavior(BRAKE);
+            //mtrBackLeft.setZeroPowerBehavior(BRAKE);
+            //mtrBackRight.setZeroPowerBehavior(BRAKE);
+            //pullArm.setZeroPowerBehavior(FLOAT);
+            //mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            //mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            //mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            //mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            //pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
             BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
@@ -70,7 +70,16 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
             parameters.loggingEnabled = false;
 
 
-//Need to be in CONFIG mode to write to registers
+
+
+            // Retrieve and initialize the IMU. We expect the IMU to be attached to an I2C port
+            // on a Core Device Interface Module, configured to be a sensor of type "AdaFruit IMU",
+            // and named "imu".
+            imu = hardwareMap.get(BNO055IMU.class, "imu");
+
+            imu.initialize(parameters);
+/*
+            //Need to be in CONFIG mode to write to registers
             imu.write8(BNO055IMU.Register.OPR_MODE, BNO055IMU.SensorMode.CONFIG.bVal & 0x0F);
 
             sleep(100); //Changing modes requires a delay before doing anything else
@@ -86,27 +95,18 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 
             sleep(100); //Changing modes again requires a delay
 
-
-            // Retrieve and initialize the IMU. We expect the IMU to be attached to an I2C port
-            // on a Core Device Interface Module, configured to be a sensor of type "AdaFruit IMU",
-            // and named "imu".
-            imu = hardwareMap.get(BNO055IMU.class, "imu");
-
-            imu.initialize(parameters);
-
             telemetry.addData("Mode", "calibrating...");
             telemetry.update();
 
             // make sure the imu gyro is calibrated before continuing.
-            while (!isStopRequested() && !imu.isGyroCalibrated()) {
+            /* while (!isStopRequested() && !imu.isGyroCalibrated()) {
                 sleep(50);
                 idle();
             }
-
+*/
             telemetry.addData("Mode", "waiting for start");
             telemetry.addData("imu calib status", imu.getCalibrationStatus().toString());
             telemetry.update();
-
             // wait for start button.
 
             waitForStart();
@@ -114,10 +114,10 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
             telemetry.addData("Mode", "running");
             telemetry.update();
 
-            sleep(1000);
+         //   sleep(1000);
 
             // drive until end of period.
-
+            imu.startAccelerationIntegration(new Position(), new Velocity(), 1000);
             while (opModeIsActive()) {
                 // Use gyro to drive in a straight line.
                 correction = checkDirection();
@@ -125,12 +125,15 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
                 telemetry.addData("1 imu heading", lastAngles.firstAngle);
                 telemetry.addData("2 global heading", globalAngle);
                 telemetry.addData("3 correction", correction);
+                telemetry.addData("4 acceleration",imu.getAcceleration());
+                telemetry.addData("5 other",getRuntime());
+                telemetry.addData("6 imu",imu.getSystemStatus());
                 telemetry.update();
 
-                mtrFrontLeft.setPower(power - correction);
-                mtrBackLeft.setPower(power - correction);
-                mtrFrontRight.setPower(power + correction);
-                mtrBackRight.setPower(power + correction);
+                //mtrFrontLeft.setPower(power - correction);
+                //mtrBackLeft.setPower(power - correction);
+                //mtrFrontRight.setPower(power + correction);
+                //mtrBackRight.setPower(power + correction);
                 // We record the sensor values because we will test them in more than
                 // one place with time passing between those places. See the lesson on
                 // Timing Considerations to know why.
@@ -142,33 +145,33 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 
                 if (yButton) {
                     // backup.
-                    mtrFrontRight.setPower(power);
-                    mtrFrontLeft.setPower(power);
-                    mtrBackLeft.setPower(power);
-                    mtrBackRight.setPower(power);
-                    sleep(500);
+                    //mtrFrontRight.setPower(power);
+                    //mtrFrontLeft.setPower(power);
+                    //mtrBackLeft.setPower(power);
+                    //mtrBackRight.setPower(power);
+                    //sleep(500);
 
                     // stop.
-                    mtrFrontRight.setPower(0);
-                    mtrFrontLeft.setPower(0);
-                    mtrBackLeft.setPower(0);
-                    mtrBackRight.setPower(0);
+                    //mtrFrontRight.setPower(0);
+                    //mtrFrontLeft.setPower(0);
+                    //mtrBackLeft.setPower(0);
+                    ///mtrBackRight.setPower(0);
                 }
 
                 {
                     if (xButton) {
                         // backup.
-                        mtrFrontRight.setPower(-power);
-                        mtrFrontLeft.setPower(-power);
-                        mtrBackLeft.setPower(-power);
-                        mtrBackRight.setPower(-power);
-                        sleep(500);
+                       // mtrFrontRight.setPower(-power);
+                       // mtrFrontLeft.setPower(-power);
+                       // mtrBackLeft.setPower(-power);
+                      //  mtrBackRight.setPower(-power);
+                      //  sleep(500);
 
                         // stop.
-                        mtrFrontRight.setPower(0);
-                        mtrFrontLeft.setPower(0);
-                        mtrBackLeft.setPower(0);
-                        mtrBackRight.setPower(0);
+                        //mtrFrontRight.setPower(0);
+                        //mtrFrontLeft.setPower(0);
+                        //mtrBackLeft.setPower(0);
+                        //mtrBackRight.setPower(0);
                     }
 
                     {
@@ -183,10 +186,10 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
                 }
 
                 // turn the motors off.
-                mtrFrontRight.setPower(0);
-                mtrFrontLeft.setPower(0);
-                mtrBackLeft.setPower(0);
-                mtrBackRight.setPower(0);
+                //mtrFrontRight.setPower(0);
+                //mtrFrontLeft.setPower(0);
+                //mtrBackLeft.setPower(0);
+                //mtrBackRight.setPower(0);
             }
         }
         /**
@@ -253,9 +256,8 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
          * Rotate left or right the number of degrees. Does not support turning more than 180 degrees.
          * @param degrees Degrees to turn, + is left - is right
          */
-        private void rotate(int degrees, double power)
-        {
-            double  leftPower, rightPower;
+        private void rotate(int degrees, double power) {
+            double leftPower, rightPower;
 
             // restart imu movement tracking.
             resetAngle();
@@ -263,26 +265,22 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
             // getAngle() returns + when rotating counter clockwise (left) and - when rotating
             // clockwise (right).
 
-            if (degrees < 0)
-            {   // turn right.
+            if (degrees < 0) {   // turn right.
                 leftPower = power;
                 rightPower = -power;
-            }
-            else if (degrees > 0)
-            {   // turn left.
+            } else if (degrees > 0) {   // turn left.
                 leftPower = -power;
                 rightPower = power;
-            }
-            else return;
+            } else return;
 
             // set power to rotate.
-            mtrFrontRight.setPower(power);
-            mtrFrontLeft.setPower(power);
-            mtrBackLeft.setPower(power);
-            mtrBackRight.setPower(power);
+            //mtrFrontRight.setPower(power);
+            //mtrFrontLeft.setPower(power);
+            //mtrBackLeft.setPower(power);
+            //mtrBackRight.setPower(power);
 
             // rotate until turn is completed.
-            if (degrees < 0)
+  /*          if (degrees < 0)
             {
                 // On right turn we have to get off zero first.
                 while (opModeIsActive() && getAngle() == 0) {}
@@ -293,16 +291,18 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
                 while (opModeIsActive() && getAngle() < degrees) {}
 
             // turn the motors off.
-            mtrFrontRight.setPower(0);
-            mtrFrontLeft.setPower(0);
-            mtrBackLeft.setPower(0);
-            mtrBackRight.setPower(0);
+            //mtrFrontRight.setPower(0);
+            //mtrFrontLeft.setPower(0);
+            //mtrBackLeft.setPower(0);
+            //mtrBackRight.setPower(0);
 
             // wait for rotation to stop.
-            sleep(1000);
+            //sleep(1000);
 
             // reset angle tracking on new heading.
             resetAngle();
         }
-    }
 
+    }
+*/
+        }}

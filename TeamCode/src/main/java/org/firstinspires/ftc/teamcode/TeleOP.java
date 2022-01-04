@@ -69,24 +69,24 @@ public class TeleOP extends OpMode {
         mtrFrontLeft = hardwareMap.get(DcMotor.class, "mtrFrontLeft");
         mtrBackRight = hardwareMap.get(DcMotor.class, "mtrBackRight");
         mtrBackLeft = hardwareMap.get(DcMotor.class, "mtrBackLeft");
-        DuckSpin = hardwareMap.get(DcMotor.class, "DuckSpin");
-        pullArm = hardwareMap.get(DcMotor.class, "pullArm");
+        //DuckSpin = hardwareMap.get(DcMotor.class, "DuckSpin");
+        //pullArm = hardwareMap.get(DcMotor.class, "pullArm");
         claw = hardwareMap.servo.get("claw");
         mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         mtrFrontRight.setZeroPowerBehavior(BRAKE);
         mtrFrontLeft.setZeroPowerBehavior(BRAKE);
         mtrBackLeft.setZeroPowerBehavior(BRAKE);
         mtrBackRight.setZeroPowerBehavior(BRAKE);
-        pullArm.setZeroPowerBehavior(FLOAT);
-        mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //pullArm.setZeroPowerBehavior(FLOAT);
+        mtrFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        mtrFrontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        mtrBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        mtrBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         }
 
     public void loop() {
@@ -151,7 +151,7 @@ public class TeleOP extends OpMode {
         // Current 2021 Collector Motors
         // r.setPower("mtrCollect1", gamepad2.left_bumper ? 1 : gamepad2.left_trigger > 0.5 ? -1 : 0);
         //r.setPower("mtrCollect2", gamepad1.left_bumper ? 1 : gamepad1.left_trigger > 0.5 ? -1 : 0);
-
+/*
         //Current 2022 Duck Spinner
         if(gamepad1.b== true && gamepad1.y==true){
             DuckSpin.setPower(0.00);
@@ -197,7 +197,9 @@ public class TeleOP extends OpMode {
 
     }
 */
+
         //Alternate Arm Code
+  /*
         if (gamepad2.a == true) {
             pullArm.setTargetPosition(425);
             pullArm.setPower(1);
@@ -275,7 +277,7 @@ public class TeleOP extends OpMode {
 
 
 
-}
+}}
 
 
 //2021 CLAW CODE - RZ & SB 
