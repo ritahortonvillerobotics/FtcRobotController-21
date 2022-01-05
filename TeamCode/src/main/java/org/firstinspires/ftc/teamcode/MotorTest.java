@@ -74,6 +74,7 @@ public class MotorTest extends OpMode {
         telemetry.addLine("Encoders");
         telemetry.addData("Encoder Value", testMotor.getCurrentPosition());
         telemetry.addData("Target Position", testMotor.getTargetPosition());
+        telemetry.addData("Is Busy?", testMotor.isBusy());
         telemetry.addLine("Run Mode/PID");
         telemetry.addData("RunMode", testMotor.getMode());
         telemetry.addData("PID Mode?", testMotor.getMode().isPIDMode());

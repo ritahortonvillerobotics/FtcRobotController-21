@@ -70,21 +70,21 @@ public class Red2 extends LinearOpMode {
         r.claw(false);
         sleep(2000);
         r.arm(4, 1000);
-        r.driveForward(.1, 1200);
+        r.driveForwardTimed(.1, 1200);
         sleep(2000);
-        r.turnLeft(.5, 1100);
+        r.turnLeftTimed(.5, 1100);
         sleep(2000);
-        r.driveForward(.1, 800);
+        r.driveForwardTimed(.1, 800);
         sleep(2000);
         r.arm(4, 1000);
         sleep(1000);
         r.claw(true);
-        r.driveBack(.1, 650);
+        r.driveBackTimed(.1, 650);
         sleep(1000);
-        r.turnLeft(.5, 325);
+        r.turnLeftTimed(.5, 325);
         r.arm(1, 500);
-        r.driveBack(.1, 650);
-        r.turnLeft(.1, 300);
-        r.driveBack(.2, 950);
+        r.driveBackTimed(.1, 650);
+        r.turnLeftTimed(.1, 300);
+        r.driveBackTimed(.2, 950);
     }
 }

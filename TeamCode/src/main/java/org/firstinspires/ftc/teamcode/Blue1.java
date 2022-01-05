@@ -2,10 +2,7 @@ package org.firstinspires.ftc.teamcode;//package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
@@ -69,21 +66,21 @@ public class Blue1 extends LinearOpMode  {
         r.claw(false);
         sleep(2000);
         r.arm(1,300);
-        r.driveForward(.1,670);
+        r.driveForwardTimed(.1,670);
         sleep(2000);
-        r.turnLeft(.35,875);
+        r.turnLeftTimed(.35,875);
         sleep(2000);
-        r.driveBack(.087,1200);
+        r.driveBackTimed(.087,1200);
         sleep(2000);
         r.duckspinner(false,2000);
         sleep(2000);
-        r.driveForward(.1,780);
+        r.driveForwardTimed(.1,780);
         sleep(300);
-        r.turnRight(.55,900);
+        r.turnRightTimed(.55,900);
         sleep(1000);
-        r.driveForward(.1,830);
-        r.turnLeft(.3,450);
+        r.driveForwardTimed(.1,830);
+        r.turnLeftTimed(.3,450);
         sleep(1000);
-        r.driveBack(.1,780);
+        r.driveBackTimed(.1,780);
     }
 }

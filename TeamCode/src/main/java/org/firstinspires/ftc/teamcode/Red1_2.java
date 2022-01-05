@@ -71,20 +71,20 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
             r.claw(false);
             sleep(2000);
             r.arm(1, 300);
-            r.driveForward(.1, 1700);
+            r.driveForwardTimed(.1, 1700);
             sleep(2000);
-            r.turnRight(.55, 950);
+            r.turnRightTimed(.55, 950);
             sleep(2000);
-            r.driveBack(.087, 1200);
+            r.driveBackTimed(.087, 1200);
             sleep(2000);
             r.duckspinner(true, 2000);
             sleep(2000);
-            r.driveForward(.1, 780);
+            r.driveForwardTimed(.1, 780);
             sleep(300);
-            r.turnLeft(.55, 900);
+            r.turnLeftTimed(.55, 900);
             sleep(1000);
-            r.driveForward(.1, 880);
-            r.turnRight(.35, 460);
+            r.driveForwardTimed(.1, 880);
+            r.turnRightTimed(.35, 460);
 
         }
     }

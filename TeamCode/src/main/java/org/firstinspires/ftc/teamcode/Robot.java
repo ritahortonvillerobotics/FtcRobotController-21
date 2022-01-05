@@ -232,7 +232,7 @@ public class Robot<aButton, bButton, yButton, xButton> {
     }
 
 
-    public void driveForward (double power, long timems) {
+    public void driveForwardTimed(double power, long timems) {
 
         if (isFourWheel == true) {
             mtrFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -271,7 +271,7 @@ public class Robot<aButton, bButton, yButton, xButton> {
        }
 
 
-    public void driveBack (double power, long timems){
+    public void driveBackTimed(double power, long timems){
         if (isFourWheel == true) {
             mtrFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -307,7 +307,7 @@ public class Robot<aButton, bButton, yButton, xButton> {
             mtrBackLeft.setPower(0.0);
         }
     }
-    public void turnRight (double power, long timems){
+    public void turnRightTimed(double power, long timems){
         if(isFourWheel == true) {
             mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -339,7 +339,7 @@ public class Robot<aButton, bButton, yButton, xButton> {
             mtrBackRight.setPower(0.0);
         }
     }
-    public void turnLeft (double power, long timems){
+    public void turnLeftTimed(double power, long timems){
         if(isFourWheel == true) {
             mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -371,6 +371,112 @@ public class Robot<aButton, bButton, yButton, xButton> {
             mtrFrontLeft.setPower(0.0);
         }
     }
+
+    public void driveEncoders(double powerValue, int counts){
+        //resets encoders
+        mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        //Run to position
+        mtrFrontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        mtrFrontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        mtrBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        mtrBackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        //Set target
+        mtrBackLeft.setTargetPosition(-counts);
+        mtrBackRight.setTargetPosition(counts);
+        mtrFrontRight.setTargetPosition(counts);
+        mtrFrontLeft.setTargetPosition(-counts);
+
+        //Set power
+        mtrFrontLeft.setPower(powerValue);
+        mtrFrontRight.setPower(powerValue);
+        mtrBackRight.setPower(powerValue);
+        mtrBackLeft.setPower(powerValue);
+
+        //Check for busy motors
+        boolean anyBusy = true;
+        while(anyBusy && opMode.opModeIsActive()){
+            anyBusy = false;
+            anyBusy |= mtrBackLeft.isBusy();
+            anyBusy |= mtrBackRight.isBusy();
+            anyBusy |= mtrFrontLeft.isBusy();
+            anyBusy |= mtrFrontRight.isBusy();
+        }
+
+        //No busy motors
+        mtrBackLeft.setPower(0);
+        mtrBackRight.setPower(0);
+        mtrFrontRight.setPower(0);
+        mtrFrontLeft.setPower(0);
+
+        //Run encoders
+        mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+    /**
+     * Creates turn, left turn uses positive counts
+     * @param powerValue Value of power, motor power
+     * @param counts How far to turn, unit is in encoder counts
+     */
+    public void turnEncoders(double powerValue, int counts){
+        //resets encoders
+        mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        //Run to position
+        mtrFrontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        mtrFrontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        mtrBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        mtrBackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        //Set target
+        mtrBackLeft.setTargetPosition(counts);
+        mtrBackRight.setTargetPosition(counts);
+        mtrFrontRight.setTargetPosition(counts);
+        mtrFrontLeft.setTargetPosition(counts);
+
+        //Set power
+        mtrFrontLeft.setPower(powerValue);
+        mtrFrontRight.setPower(powerValue);
+        mtrBackRight.setPower(powerValue);
+        mtrBackLeft.setPower(powerValue);
+
+        //Check for busy motors
+        boolean anyBusy = true;
+        while(anyBusy && opMode.opModeIsActive()){
+            anyBusy = false;
+            anyBusy |= mtrBackLeft.isBusy();
+            anyBusy |= mtrBackRight.isBusy();
+            anyBusy |= mtrFrontLeft.isBusy();
+            anyBusy |= mtrFrontRight.isBusy();
+        }
+
+        //No busy motors
+        mtrBackLeft.setPower(0);
+        mtrBackRight.setPower(0);
+        mtrFrontRight.setPower(0);
+        mtrFrontLeft.setPower(0);
+
+        //Run encoders
+        mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+
+
+
+
     public void arm (int level,long timems){
         //Alternate Arm Code
         if (level == 1) {
