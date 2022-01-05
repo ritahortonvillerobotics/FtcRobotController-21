@@ -92,10 +92,10 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 
          //Alt Trainmtr
-         mtrFrontRight.setPower(Math.abs(gamepad1.right_stick_y) * .4 <= .07 ? 0 : gamepad1.right_stick_y);
-         mtrFrontLeft.setPower(Math.abs(gamepad1.left_stick_y) * .4 <= .07 ? 0 : -gamepad1.left_stick_y);
-         mtrBackLeft.setPower(Math.abs(gamepad1.left_stick_y) * .4 <= .07 ? 0 : -gamepad1.left_stick_y);
-         mtrBackRight.setPower(Math.abs(gamepad1.right_stick_y) * .4 <= .07 ? 0 : gamepad1.right_stick_y);
+         mtrFrontRight.setPower(Math.abs(gamepad1.right_stick_y)  <= .07 ? 0 : gamepad1.right_stick_y);
+         mtrFrontLeft.setPower(Math.abs(gamepad1.left_stick_y)  <= .07 ? 0 : -gamepad1.left_stick_y);
+         mtrBackLeft.setPower(Math.abs(gamepad1.left_stick_y)  <= .07 ? 0 : -gamepad1.left_stick_y);
+         mtrBackRight.setPower(Math.abs(gamepad1.right_stick_y)  <= .07 ? 0 : gamepad1.right_stick_y);
          mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
          mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
          mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
