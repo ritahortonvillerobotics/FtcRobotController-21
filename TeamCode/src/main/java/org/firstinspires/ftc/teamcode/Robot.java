@@ -28,11 +28,7 @@ public class Robot<aButton, bButton, yButton, xButton> {
     boolean                 imuForward, imuBack, imuRight, imuLeft;
 
 
-
-
-
     public LinearOpMode opMode;
-    boolean isFourWheel = false;
 
     public void imuForward() {
         while (opMode.opModeIsActive()) {
@@ -96,19 +92,6 @@ public class Robot<aButton, bButton, yButton, xButton> {
         mtrBackLeft.setPower(0);
         resetAngle();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public  void imuSetup() {
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
@@ -233,46 +216,25 @@ public class Robot<aButton, bButton, yButton, xButton> {
 
 
     public void driveForwardTimed(double power, long timems) {
+        mtrFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        mtrFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        mtrFrontRight.setPower(power);
+        mtrBackRight.setPower(power);
+        mtrFrontLeft.setPower(-power);
+        mtrBackLeft.setPower(-power);
 
-        if (isFourWheel == true) {
-            mtrFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            mtrFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            mtrFrontRight.setPower(power);
-            mtrBackRight.setPower(power);
-            mtrFrontLeft.setPower(-power);
-            mtrBackLeft.setPower(-power);
+        opMode.sleep(timems);
 
-            opMode.sleep(timems);
-
-            mtrFrontRight.setPower(0.0);
-            mtrBackRight.setPower(0.0);
-            mtrFrontLeft.setPower(0.0);
-            mtrBackLeft.setPower(0.0);
-
-
-        }
-       if((isFourWheel==false))
-           mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-           mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-           mtrFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-           mtrFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-           mtrFrontRight.setPower(0.0);
-           mtrFrontLeft.setPower(0.0);
-
-           mtrBackRight.setPower(power);
-           mtrBackLeft.setPower(-power);
-
-           opMode.sleep(timems);
-
-           mtrBackRight.setPower(0.0);
-           mtrBackLeft.setPower(0.0);
-       }
+        mtrFrontRight.setPower(0.0);
+        mtrBackRight.setPower(0.0);
+        mtrFrontLeft.setPower(0.0);
+        mtrBackLeft.setPower(0.0);
+    }
 
 
     public void driveBackTimed(double power, long timems){
-        if (isFourWheel == true) {
             mtrFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -288,27 +250,9 @@ public class Robot<aButton, bButton, yButton, xButton> {
             mtrBackRight.setPower(0.0);
             mtrFrontLeft.setPower(0.0);
             mtrBackLeft.setPower(0.0);
-
-
         }
-        if((isFourWheel==false)){
-            mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            mtrFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-            mtrFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-            mtrFrontRight.setPower(0.0);
-            mtrFrontLeft.setPower(0.0);
-            mtrBackRight.setPower(-power);
-            mtrBackLeft.setPower(power);
 
-            opMode.sleep(timems);
-
-            mtrBackRight.setPower(0.0);
-            mtrBackLeft.setPower(0.0);
-        }
-    }
     public void turnRightTimed(double power, long timems){
-        if(isFourWheel == true) {
             mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             mtrFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -323,24 +267,8 @@ public class Robot<aButton, bButton, yButton, xButton> {
             mtrFrontLeft.setPower(0.0);
             mtrBackLeft.setPower(0.0);
         }
-        if (isFourWheel == false){
-            mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-            mtrFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-            mtrFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            mtrFrontLeft.setPower(-power);
-            mtrBackRight.setPower(power);
 
-            opMode.sleep((timems));
-
-            mtrFrontLeft.setPower(0.0);
-            mtrFrontRight.setPower(0.0);
-            mtrBackLeft.setPower(0.0);
-            mtrBackRight.setPower(0.0);
-        }
-    }
     public void turnLeftTimed(double power, long timems){
-        if(isFourWheel == true) {
             mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             mtrBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             mtrFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -354,22 +282,6 @@ public class Robot<aButton, bButton, yButton, xButton> {
             mtrBackRight.setPower(0.0);
             mtrFrontLeft.setPower(0.0);
             mtrBackLeft.setPower(0.0);
-        }
-        if (isFourWheel == false){
-            mtrFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            mtrFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            mtrFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-            mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-            mtrFrontRight.setPower(-power);
-            mtrBackLeft.setPower(power);
-
-            opMode.sleep(timems);
-
-            mtrFrontRight.setPower(0.0);
-            mtrBackRight.setPower(0.0);
-            mtrBackLeft.setPower(0.0);
-            mtrFrontLeft.setPower(0.0);
-        }
     }
 
     public void driveEncoders(double powerValue, int counts){
@@ -533,9 +445,6 @@ public class Robot<aButton, bButton, yButton, xButton> {
         }
         opMode.sleep(timems);
         DuckSpin.setPower(0.0);
-    }
-    public void setDrive (boolean value){
-        isFourWheel=value;
     }
     public void allBrake() {
         mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
