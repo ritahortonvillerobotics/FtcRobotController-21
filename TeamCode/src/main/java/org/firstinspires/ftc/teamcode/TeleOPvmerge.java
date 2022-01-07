@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode; //package org.firstinspires.ftc.teamcode;
 
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
  import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  import com.qualcomm.robotcore.hardware.DcMotor;
@@ -21,7 +22,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 
  @TeleOp(name = "TeleOPTest2022Vision", group = "TeleOp")
-
+@Disabled
  public class  TeleOPvmerge extends OpMode {
      private DcMotor DuckSpin;
      private DcMotor mtrFrontRight;
@@ -96,10 +97,6 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
          mtrFrontLeft.setPower(Math.abs(gamepad1.left_stick_y)  <= .07 ? 0 : -gamepad1.left_stick_y);
          mtrBackLeft.setPower(Math.abs(gamepad1.left_stick_y)  <= .07 ? 0 : -gamepad1.left_stick_y);
          mtrBackRight.setPower(Math.abs(gamepad1.right_stick_y)  <= .07 ? 0 : gamepad1.right_stick_y);
-         mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-         mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-         mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-         mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
          mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
          mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
          mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

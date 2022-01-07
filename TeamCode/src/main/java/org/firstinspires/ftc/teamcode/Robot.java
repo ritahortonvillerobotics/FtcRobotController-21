@@ -22,6 +22,7 @@ public class Robot<aButton, bButton, yButton, xButton> {
     public DcMotor pullArm;
     public Servo claw;
     public BNO055IMU imu;
+    public static final int COUNTS_PER_ROTATION = 0;
 
     Orientation lastAngles = new Orientation();
     double                  globalAngle, imupower = .30,   correction;
@@ -384,6 +385,17 @@ public class Robot<aButton, bButton, yButton, xButton> {
         mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
+
+//    public void driveForwardInch (double powerValue, double inches){
+//
+//
+//
+//
+//
+//        turnEncoders(powerValue, counts);
+//
+//    }
+
 
 
 

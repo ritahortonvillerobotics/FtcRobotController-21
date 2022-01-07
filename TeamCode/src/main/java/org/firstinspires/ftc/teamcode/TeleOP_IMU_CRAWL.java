@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;  //package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.hardware.bosch.BNO055IMU;
@@ -24,6 +25,7 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
 import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 
 @TeleOp(name = "tELEOP_IMUcRAWL", group = "TeleOp")
+@Disabled
 public class TeleOP_IMU_CRAWL extends OpMode {
     private DcMotor DuckSpin;
     private DcMotor mtrFrontRight;
