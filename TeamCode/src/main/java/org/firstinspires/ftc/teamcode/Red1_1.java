@@ -13,7 +13,7 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 //import hortonvillerobotics.FinalRobotConfiguration;
 
 
-    @Autonomous(name = "org.firstinspires.ftc.teamcode.Red1_1", group = "Autonomous")
+    @Autonomous(name = "Red1_1", group = "Autonomous")
 //
     public class Red1_1 extends LinearOpMode {
         private DcMotor DuckSpin;
@@ -41,7 +41,7 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 
         @Override
         public void runOpMode() throws InterruptedException {
-            Robot r = new Robot();
+            Robot r = new Robot(this);
             r.DuckSpin = hardwareMap.dcMotor.get("DuckSpin");
             r.mtrFrontRight = hardwareMap.dcMotor.get("mtrFrontRight");
             r.mtrFrontLeft = hardwareMap.dcMotor.get("mtrFrontLeft");

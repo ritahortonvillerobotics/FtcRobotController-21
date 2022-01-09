@@ -11,7 +11,7 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 //import hortonvillerobotics.FinalRobotConfiguration;
 
 
-@Autonomous(name = "org.firstinspires.ftc.teamcode.Blue1", group = "Autonomous")
+@Autonomous(name = "Blue1", group = "Autonomous")
 //
 public class Blue1 extends LinearOpMode  {
     private DcMotor DuckSpin;
@@ -37,7 +37,7 @@ public class Blue1 extends LinearOpMode  {
     @Override
     public void runOpMode() throws InterruptedException {
 
-        Robot r = new Robot();
+        Robot r = new Robot(this);
         r.DuckSpin = hardwareMap.dcMotor.get("DuckSpin");
         r.mtrFrontRight = hardwareMap.dcMotor.get("mtrFrontRight");
         r.mtrFrontLeft = hardwareMap.dcMotor.get("mtrFrontLeft");
@@ -66,21 +66,21 @@ public class Blue1 extends LinearOpMode  {
         r.claw(false);
         sleep(2000);
         r.arm(1,300);
-        r.driveForwardTimed(.1,670);
+        r.driveEncodersInch(.1,4);
         sleep(2000);
-        r.turnLeftTimed(.35,875);
+        r.turnEncodersDegree(.35,140);
         sleep(2000);
-        r.driveBackTimed(.087,1200);
+        r.driveEncodersInch(.1,-40);
         sleep(2000);
         r.duckspinner(false,2000);
         sleep(2000);
-        r.driveForwardTimed(.1,780);
+        r.driveEncodersInch(.1,4);
         sleep(300);
-        r.turnRightTimed(.55,900);
+        r.turnEncodersDegree(.25,-30);
         sleep(1000);
-        r.driveForwardTimed(.1,830);
-        r.turnLeftTimed(.3,450);
+        r.driveEncodersInch(.1,12);
+        r.turnEncodersDegree(.25,90);
         sleep(1000);
-        r.driveBackTimed(.1,780);
+        r.driveBackTimed(.1,30000);
     }
 }

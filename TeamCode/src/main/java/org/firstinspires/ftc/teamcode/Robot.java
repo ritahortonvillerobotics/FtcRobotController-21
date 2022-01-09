@@ -22,7 +22,12 @@ public class Robot<aButton, bButton, yButton, xButton> {
     public DcMotor pullArm;
     public Servo claw;
     public BNO055IMU imu;
-    public static final int COUNTS_PER_ROTATION = 0;
+    public static final int COUNTS_PER_ROTATION = 560;
+    public static final double WHEEL_DIAMETER = 8;
+    public static final double WHEEL_CIRCUMFERENCE = Math.PI*WHEEL_DIAMETER;
+    public static final double TURNING_DIAMETER = 17;
+    public static final double TURNING_CIRCUMFERENCE = Math.PI*TURNING_DIAMETER;
+
 
     Orientation lastAngles = new Orientation();
     double                  globalAngle, imupower = .30,   correction;
@@ -30,6 +35,10 @@ public class Robot<aButton, bButton, yButton, xButton> {
 
 
     public LinearOpMode opMode;
+
+    public Robot(LinearOpMode opMode){
+        this.opMode = opMode;
+    }
 
     public void imuForward() {
         while (opMode.opModeIsActive()) {
@@ -299,10 +308,10 @@ public class Robot<aButton, bButton, yButton, xButton> {
         mtrBackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         //Set target
-        mtrBackLeft.setTargetPosition(-counts);
-        mtrBackRight.setTargetPosition(counts);
-        mtrFrontRight.setTargetPosition(counts);
-        mtrFrontLeft.setTargetPosition(-counts);
+        mtrBackLeft.setTargetPosition(counts);
+        mtrBackRight.setTargetPosition(-counts);
+        mtrFrontRight.setTargetPosition(-counts);
+        mtrFrontLeft.setTargetPosition(counts);
 
         //Set power
         mtrFrontLeft.setPower(powerValue);
@@ -314,8 +323,8 @@ public class Robot<aButton, bButton, yButton, xButton> {
         boolean anyBusy = true;
         while(anyBusy && opMode.opModeIsActive()){
             anyBusy = false;
-            anyBusy |= mtrBackLeft.isBusy();
-            anyBusy |= mtrBackRight.isBusy();
+            //anyBusy |= mtrBackLeft.isBusy();
+            //anyBusy |= mtrBackRight.isBusy();
             anyBusy |= mtrFrontLeft.isBusy();
             anyBusy |= mtrFrontRight.isBusy();
         }
@@ -352,10 +361,10 @@ public class Robot<aButton, bButton, yButton, xButton> {
         mtrBackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         //Set target
-        mtrBackLeft.setTargetPosition(counts);
-        mtrBackRight.setTargetPosition(counts);
-        mtrFrontRight.setTargetPosition(counts);
-        mtrFrontLeft.setTargetPosition(counts);
+        mtrBackLeft.setTargetPosition(-counts);
+        mtrBackRight.setTargetPosition(-counts);
+        mtrFrontRight.setTargetPosition(-counts);
+        mtrFrontLeft.setTargetPosition(-counts);
 
         //Set power
         mtrFrontLeft.setPower(powerValue);
@@ -367,8 +376,8 @@ public class Robot<aButton, bButton, yButton, xButton> {
         boolean anyBusy = true;
         while(anyBusy && opMode.opModeIsActive()){
             anyBusy = false;
-            anyBusy |= mtrBackLeft.isBusy();
-            anyBusy |= mtrBackRight.isBusy();
+            //anyBusy |= mtrBackLeft.isBusy();
+            //anyBusy |= mtrBackRight.isBusy();
             anyBusy |= mtrFrontLeft.isBusy();
             anyBusy |= mtrFrontRight.isBusy();
         }
@@ -386,18 +395,19 @@ public class Robot<aButton, bButton, yButton, xButton> {
         mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
-//    public void driveForwardInch (double powerValue, double inches){
-//
-//
-//
-//
-//
-//        turnEncoders(powerValue, counts);
-//
-//    }
+    public void driveEncodersInch (double power, double distance){
+        double targetRevolutions = distance/WHEEL_CIRCUMFERENCE;
+        int counts = (int) (targetRevolutions*COUNTS_PER_ROTATION);
+        driveEncoders(power, counts);
+    }
 
-
-
+    public void turnEncodersDegree (double power, double degrees){
+        double turningCircleFraction = degrees/360;
+        double turningInches = turningCircleFraction*TURNING_CIRCUMFERENCE;
+        double turningRevolutions = turningInches/WHEEL_CIRCUMFERENCE;
+        int counts = (int) (turningRevolutions*COUNTS_PER_ROTATION);
+        turnEncoders(power, counts);
+    }
 
 
 
