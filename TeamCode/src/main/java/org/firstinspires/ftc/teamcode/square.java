@@ -42,11 +42,10 @@ public class square extends LinearOpMode {
         waitForStart();
 
         for(int i=0;i<4 && opModeIsActive();i++){
-            r.driveEncodersInch(0.25, 24);
-            sleep(500);
-            r.turnEncodersDegree(.25, -90);
+            r.turnEncodersDegree(.25, -360);
+            sleep(5000);
+            r.turnEncodersDegree(.25, -360);
             sleep(5000);
         }
     }
-
 }
