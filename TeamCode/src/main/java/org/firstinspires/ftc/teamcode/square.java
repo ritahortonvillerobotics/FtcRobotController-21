@@ -42,9 +42,9 @@ public class square extends LinearOpMode {
         waitForStart();
         while(opModeIsActive()){
             double power = 0.1;
-            r.mtrBackRight.setPower(-power);
+            r.mtrBackRight.setPower(power);
             r.mtrBackLeft.setPower(power);
-            r.mtrFrontRight.setPower(-power);
+            r.mtrFrontRight.setPower(power);
             r.mtrFrontLeft.setPower(power);
         }
     }
