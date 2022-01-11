@@ -12,7 +12,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 
-public class Robot<aButton, bButton, yButton, xButton> {
+public class Robot {
     // Hardware Setup for Robot Object
     public DcMotor mtrFrontRight;
     public DcMotor mtrFrontLeft;
