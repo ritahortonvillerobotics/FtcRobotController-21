@@ -22,7 +22,7 @@ public class square extends LinearOpMode {
         r.claw = hardwareMap.servo.get("claw");
 
         r.mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        r. mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        r.mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         r.mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         r.mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         r.pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -40,12 +40,12 @@ public class square extends LinearOpMode {
         r.opMode = this;
 
         waitForStart();
-
-        for(int i=0;i<4 && opModeIsActive();i++){
-            r.turnEncodersDegree(.25, -360);
-            sleep(5000);
-            r.turnEncodersDegree(.25, -360);
-            sleep(5000);
+        while(opModeIsActive()){
+            double power = 0.1;
+            r.mtrBackRight.setPower(-power);
+            r.mtrBackLeft.setPower(power);
+            r.mtrFrontRight.setPower(-power);
+            r.mtrFrontLeft.setPower(power);
         }
     }
 }
