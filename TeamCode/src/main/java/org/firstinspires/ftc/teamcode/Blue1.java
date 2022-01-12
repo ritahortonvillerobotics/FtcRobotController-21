@@ -31,6 +31,7 @@ public class Blue1 extends LinearOpMode  {
     boolean g1AP = false;
     boolean g2BL = false;
 
+    private static final int STOP_ROBOT_TIME = 1000;
     //TestRobotConfig testRobotConfig = new TestRobotConfig();
     int a = 0;
 
@@ -64,23 +65,31 @@ public class Blue1 extends LinearOpMode  {
         r.claw(true);
         waitForStart();
         r.claw(false);
-        sleep(2000);
+        sleep(STOP_ROBOT_TIME);
         r.arm(1,300);
         r.driveEncodersInch(.1,4);
-        sleep(2000);
-        r.turnEncodersDegree(.35,140);
-        sleep(2000);
-        r.driveEncodersInch(.1,-40);
-        sleep(2000);
-        r.duckspinner(false,2000);
-        sleep(2000);
+        sleep(STOP_ROBOT_TIME);
+        r.turnEncodersDegree(.25,100);
+        sleep(STOP_ROBOT_TIME);
+        r.driveEncodersInch(.1,-31.5);
+        sleep(STOP_ROBOT_TIME);
+        r.duckspinner(false,2000, 0.3);
+        sleep(STOP_ROBOT_TIME);
         r.driveEncodersInch(.1,4);
-        sleep(300);
+        sleep(STOP_ROBOT_TIME);
         r.turnEncodersDegree(.25,-30);
-        sleep(1000);
+        sleep(STOP_ROBOT_TIME);
         r.driveEncodersInch(.1,12);
         r.turnEncodersDegree(.25,90);
-        sleep(1000);
-        r.driveBackTimed(.1,30000);
+        sleep(STOP_ROBOT_TIME);
+        r.driveEncodersInch(.1, -17);
+        sleep(STOP_ROBOT_TIME);
+        r.turnEncodersDegree(.25,-27 );
+        sleep(STOP_ROBOT_TIME);
+        r.driveBackTimed(-.1,30000);
+
+
+
+
     }
 }

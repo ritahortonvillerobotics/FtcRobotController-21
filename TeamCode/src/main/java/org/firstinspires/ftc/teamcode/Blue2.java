@@ -86,5 +86,9 @@ public class Blue2 extends LinearOpMode {
         r.driveBackTimed(.1, 650);
         r.turnRightTimed(.1, 300);
         r.driveBackTimed(.2, 950);
+
+
+
+
     }
 }

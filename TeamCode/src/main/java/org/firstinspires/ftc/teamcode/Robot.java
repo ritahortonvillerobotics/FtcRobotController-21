@@ -457,16 +457,21 @@ public class Robot {
 
 
     }
-    public void duckspinner (boolean clockwise,long timems){
+    public void duckspinner (boolean clockwise,long timems, double power){
 
         if (clockwise == true) {
-            DuckSpin.setPower(0.45);
+            DuckSpin.setPower(power);
         }
         if (clockwise==false) {
-            DuckSpin.setPower(-0.45);
+            DuckSpin.setPower(-power);
         }
         opMode.sleep(timems);
         DuckSpin.setPower(0.0);
+    }
+
+    public void duckspinner (boolean clockwise,long timems){
+
+        duckspinner(clockwise, timems, 0.45);
     }
     public void allBrake() {
         mtrBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
