@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;//package org.firstinspires.ftc.teamcode;
+ package org.firstinspires.ftc.teamcode;//package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -67,13 +67,17 @@ public class Blue1 extends LinearOpMode  {
         r.claw(false);
         sleep(STOP_ROBOT_TIME);
         r.arm(1,300);
-        r.driveEncodersInch(.1,4);
+        r.driveEncodersInch(.1,5);
         sleep(STOP_ROBOT_TIME);
-        r.turnEncodersDegree(.25,100);
+        r.turnEncodersDegree(.1,78);
         sleep(STOP_ROBOT_TIME);
-        r.driveEncodersInch(.1,-31.5);
+        r.driveEncodersInch(.1,-28);
         sleep(STOP_ROBOT_TIME);
+        r.mtrBackLeft.setPower(-0.07);
+        r.mtrFrontLeft.setPower(-0.07);
         r.duckspinner(false,2000, 0.3);
+        r.mtrBackLeft.setPower(0);
+        r.mtrFrontLeft.setPower(0);
         sleep(STOP_ROBOT_TIME);
         r.driveEncodersInch(.1,4);
         sleep(STOP_ROBOT_TIME);
@@ -82,9 +86,9 @@ public class Blue1 extends LinearOpMode  {
         r.driveEncodersInch(.1,12);
         r.turnEncodersDegree(.25,90);
         sleep(STOP_ROBOT_TIME);
-        r.driveEncodersInch(.1, -17);
+        r.driveEncodersInch(.1, -19);
         sleep(STOP_ROBOT_TIME);
-        r.turnEncodersDegree(.25,-27 );
+        r.turnEncodersDegree(.25,-28 );
         sleep(STOP_ROBOT_TIME);
         r.driveBackTimed(-.1,30000);
 

@@ -38,6 +38,7 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
 
         //TestRobotConfig testRobotConfig = new TestRobotConfig();
         int a = 0;
+        private static final int STOP_ROBOT_TIME = 1000;
 
         @Override
         public void runOpMode() throws InterruptedException {
@@ -68,17 +69,19 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
             r.claw(true);
             waitForStart();
             r.claw(false);
-            sleep(2000);
+            sleep(STOP_ROBOT_TIME);
             r.arm(1,300);
-            r.driveForwardTimed(.1,850);
-            sleep(2000);
-            r.turnRightTimed(.55,900);
-            sleep(2000);
-            r.driveBackTimed(.087,1200);
-            sleep(2000);
-            r.duckspinner(true,2000);
-            sleep(2000);
-            r.driveForwardTimed(.1,780);
-            sleep(300);
+            r.driveEncodersInch(0.1, 22);
+            r.turnEncodersDegree(0.1, -90);
+            r.driveEncodersInch(0.1,-28);
+            r.turnEncodersDegree(.1,90);
+            r.driveEncodersInch(.1,-22.5);
+            r.mtrBackLeft.setPower(-0.07);
+            r.mtrFrontLeft.setPower(-0.07);
+            r.duckspinner(true,3000, 0.3);
+            r.mtrBackLeft.setPower(0);
+            r.mtrFrontLeft.setPower(0);
+            r.driveEncodersInch(.1,18);
+
         }
     }
