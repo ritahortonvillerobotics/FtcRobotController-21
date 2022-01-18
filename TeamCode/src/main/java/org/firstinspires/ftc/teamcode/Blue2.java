@@ -38,7 +38,7 @@ public class Blue2 extends LinearOpMode {
 
     //TestRobotConfig testRobotConfig = new TestRobotConfig();
     int a = 0;
-
+    private static final int STOP_ROBOT_TIME = 1000;
     @Override
     public void runOpMode() throws InterruptedException {
         Robot r = new Robot(this);
@@ -68,7 +68,7 @@ public class Blue2 extends LinearOpMode {
         r.claw(true);
         waitForStart();
         r.claw(false);
-        sleep(2000);
+        sleep(STOP_ROBOT_TIME);
         r.arm(4, 1000);
         r.driveForwardTimed(.1, 1200);
         sleep(2000);
