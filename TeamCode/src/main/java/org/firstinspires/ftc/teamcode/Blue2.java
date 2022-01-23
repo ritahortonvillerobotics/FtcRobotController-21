@@ -70,22 +70,24 @@ public class Blue2 extends LinearOpMode {
         r.claw(false);
         sleep(STOP_ROBOT_TIME);
         r.arm(4, 1000);
-        r.driveForwardTimed(.1, 1200);
-        sleep(2000);
-        r.turnRightTimed(.5, 1100);
-        sleep(2000);
-        r.driveForwardTimed(.1, 800);
-        sleep(2000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
         r.arm(4, 1000);
-        sleep(1000);
+        sleep(STOP_ROBOT_TIME);
         r.claw(true);
-        r.driveBackTimed(.1, 650);
+        r.driveEncodersInch(.1, -1);
         sleep(1000);
-        r.turnRightTimed(.5, 325);
+        r.turnEncodersDegree(.5, 30);
+        r.arm(3,500);
+        r.arm(2,500);
         r.arm(1, 500);
-        r.driveBackTimed(.1, 650);
-        r.turnRightTimed(.1, 300);
-        r.driveBackTimed(.2, 950);
+        r.driveEncodersInch(.1, -15);
+        r.turnEncodersDegree(.1, 100);
+        r.driveEncodersInch(.1,36);
 
 
 
