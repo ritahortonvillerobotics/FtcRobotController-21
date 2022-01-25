@@ -86,8 +86,8 @@ public class Red2 extends LinearOpMode {
         r.arm(2,500);
         r.arm(1, 500);
         r.driveEncodersInch(.1, -15);
-        r.turnEncodersDegree(.5, -72);
-        r.driveEncodersInch(.25,36);
+        r.turnEncodersDegree(.5, -74);
+        r.driveEncodersInch(.3,36);
 
     }
 }
