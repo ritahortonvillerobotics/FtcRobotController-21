@@ -87,7 +87,8 @@ public class Blue2 extends LinearOpMode {
         r.arm(1, 500);
         r.driveEncodersInch(.1, -15);
         r.turnEncodersDegree(.1, 100);
-        r.driveEncodersInch(.1,36);
+        r.driveEncodersInch(.5,36);
+
 
 
 

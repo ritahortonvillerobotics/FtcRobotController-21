@@ -72,7 +72,7 @@ public class Red2 extends LinearOpMode {
         r.arm(4, 1000);
         r.driveEncodersInch(.1,21);
         //sleep(2000);
-        r.turnEncodersDegree(.5,59);
+        r.turnEncodersDegree(.2,59);
         //sleep(2000);
         r.driveEncodersInch(.1, 8);
         //sleep(2000);
@@ -81,12 +81,12 @@ public class Red2 extends LinearOpMode {
         r.claw(true);
         r.driveEncodersInch(.1, -1);
         sleep(1000);
-        r.turnEncodersDegree(.5, -30);
+        r.turnEncodersDegree(.2, -30);
         r.arm(3,500);
         r.arm(2,500);
         r.arm(1, 500);
         r.driveEncodersInch(.1, -15);
-        r.turnEncodersDegree(.5, -74);
+        r.turnEncodersDegree(.2, -80);
         r.driveEncodersInch(.3,36);
 
     }
