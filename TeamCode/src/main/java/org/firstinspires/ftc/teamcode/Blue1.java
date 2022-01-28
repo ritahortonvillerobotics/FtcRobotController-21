@@ -75,7 +75,7 @@ public class Blue1 extends LinearOpMode  {
         sleep(STOP_ROBOT_TIME);
         r.mtrBackLeft.setPower(-0.07);
         r.mtrFrontLeft.setPower(-0.07);
-        r.duckspinner(false,2000, 0.3);
+        r.duckspinner(false,2150, 0.3);
         r.mtrBackLeft.setPower(0);
         r.mtrFrontLeft.setPower(0);
         sleep(STOP_ROBOT_TIME);
