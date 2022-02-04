@@ -100,12 +100,12 @@ public class TeleOP extends OpMode {
 
         //Current 2022 Duck Spinner
         if (gamepad1.b) {
-            DuckSpin.setPower(0.52);
+            DuckSpin.setPower(0.51);
         } else if (!gamepad1.b) {
             DuckSpin.setPower(0.0);
         }
         if (gamepad1.y) {
-            DuckSpin.setPower(-0.52);
+            DuckSpin.setPower(-0.51);
         } else if (!gamepad1.y) {
             DuckSpin.setPower(0.0);
         }
