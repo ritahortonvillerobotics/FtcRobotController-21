@@ -182,13 +182,13 @@ public class Blue1 extends LinearOpMode  {
     @Override
     public void runOpMode() throws InterruptedException {
         Robot r = new Robot(this);
-        if(label.getRight() && recognition.getBottom <= 300){
+        /*if(label.getRight() && recognition.getBottom <= 300){
             r.arm(1,200);
         }else if (recognition.getRight() && recognition.getBottom >= 400){
             r.arm(2,200);
         }else{
             r.arm(4,200);
-        }
+        }*/
         r.DuckSpin = hardwareMap.dcMotor.get("DuckSpin");
         r.mtrFrontRight = hardwareMap.dcMotor.get("mtrFrontRight");
         r.mtrFrontLeft = hardwareMap.dcMotor.get("mtrFrontLeft");
