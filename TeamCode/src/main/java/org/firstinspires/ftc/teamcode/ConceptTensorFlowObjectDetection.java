@@ -62,10 +62,10 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
    *  FreightFrenzy_BC.tflite  0: Ball,  1: Cube
    *  FreightFrenzy_DM.tflite  0: Duck,  1: Marker
    */
-    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_DM.tflite";
+    private static final String TFOD_MODEL_ASSET = "";
     private static final String[] LABELS = {
-      "Duck",
-      "Marker"
+      "Class 1",
+      "Class 2"
     };
 
     /*
@@ -115,7 +115,7 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
             // to artificially zoom in to the center of image.  For best results, the "aspectRatio" argument
             // should be set to the value of the images used to create the TensorFlow Object Detection model
             // (typically 16/9).
-            tfod.setZoom(1.0, 16.0/9.0);
+            tfod.setZoom(1.3, 16.0/9.0);
         }
 
         /** Wait for the game to begin */
