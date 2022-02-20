@@ -217,16 +217,16 @@ public class b1v1 {
             r.claw(true);
             waitForStart();
             // To become method blue1Duck1
-            r.claw(false);
+            
             r.driveEncodersInch(.1,8.50);
             r.turnEncodersDegree(.1,90);
             r.arm(1,2000);
             r.driveEncodersInch(.1,20.00);
-            r.turnEncodersDegree(.1,-80);
-            r.driveEncodersInch(.1,5.00
-             );
-            r.claw(true);
-
+            r.turnEncodersDegree(.1,-72);
+            r.driveEncodersInch(.1,5.50);
+            r.arm(1,1000);
+            r.claw(false);
+            ;
 
             ;
 
