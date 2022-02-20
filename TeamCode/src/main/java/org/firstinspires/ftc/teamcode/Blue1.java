@@ -183,6 +183,7 @@ public class Blue1 extends LinearOpMode  {
     @Override
     public void runOpMode() throws InterruptedException {
         Robot r = new Robot(this);
+        Autonomous_Vision a = new Autonomous_Vision();
         /*if(label.getRight() && recognition.getBottom <= 300){
             r.arm(1,200);
         }else if (recognition.getRight() && recognition.getBottom >= 400){
@@ -215,7 +216,17 @@ public class Blue1 extends LinearOpMode  {
         r.pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         r.claw(true);
         waitForStart();
-        r.claw(false);
+        int duck = 1;
+        if (duck == 1){
+            a.Blue1_Position1(r);
+        }else if (duck == 2){
+            a.Blue1_Position2(r);
+        }else if(duck == 3){
+            a.Blue1_Position3(r);
+        }
+
+
+        /*r.claw(false);
         sleep(STOP_ROBOT_TIME);
         r.arm(1,300);
         r.driveEncodersInch(.1,5);
@@ -245,6 +256,6 @@ public class Blue1 extends LinearOpMode  {
 
 
 
-
+*/
     }
 }

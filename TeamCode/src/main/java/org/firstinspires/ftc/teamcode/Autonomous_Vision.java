@@ -215,7 +215,6 @@ public class Autonomous_Vision {
         r.arm(1, 1000);
         r.opMode.sleep (STOP_ROBOT_TIME);
         r.claw(true);
-
     }
     public void Blue2_Position2(Robot r){
         r.claw(false);
