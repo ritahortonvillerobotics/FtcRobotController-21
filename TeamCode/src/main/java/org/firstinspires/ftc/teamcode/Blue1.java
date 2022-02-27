@@ -41,7 +41,6 @@ public class Blue1 extends LinearOpMode  {
                 "Marker"
         };
 
-
         /*
          * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
          * 'parameters.vuforiaLicenseKey' is initialized is for illustration only, and will not function.
