@@ -72,11 +72,10 @@ public class ConceptTensorFlowObjectDetection_test extends LinearOpMode {
       "Duck",
       "Marker"
     };*/
-    private static final String TFOD_MODEL_ASSET = "model_unquant.tflite";
+    private static final String TFOD_MODEL_ASSET = "1.tflite";
     private static final String[] LABELS = {
-            "Icon",
-            "Duck",
-            "Block"
+            "Class 1",
+            "Class 2",
     };
 
     /*
