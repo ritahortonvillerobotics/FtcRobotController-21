@@ -1,6 +1,6 @@
- package org.firstinspires.ftc.teamcode;//package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -12,15 +12,7 @@ import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 
 import java.util.List;
 
-import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
-import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.FLOAT;
-
-//import hortonvillerobotics.FinalRobotConfiguration;
-
-
-@Autonomous(name = "Blue1", group = "Autonomous")
-//
-public class Blue1 extends LinearOpMode  {
+public class Autonomous_Vision {
     public static class ConceptTensorFlowObjectDetection_test extends LinearOpMode {
         /* Note: This sample uses the all-objects Tensor Flow model (FreightFrenzy_BCDM.tflite), which contains
          * the following 4 detectable objects
@@ -166,96 +158,175 @@ public class Blue1 extends LinearOpMode  {
     private DcMotor pullArm;
     public Servo claw;
     private static final String VUFORIA_KEY = "Ae4Y1tr/////AAABmUOIhh5VUERBieW2UEGVyT2AGvBs+tqZimMoeJTBL57NfKJQjp9v+D/teyPEUYRfVkkTnyZEQGfCewAz0dZlwLkfxcfyWDbEBz33yGrmSEZY7WleEqYVt1P3Eewq1wFWHKxosHyETLU+Vs2XfoKtGXJou46WMNSofNvh4CvLU1bYwwA4Yr9nZ7xbgEySOopKhfXujf1XMqKcmgag7jXEj9WaEUY+7ehRq1A8hKtQjYb2YlrKC5zNZSeiBBTBmYjTbl7Zhn1QxYfOPKWlxZ9tD1/6/OwCSAO/nWwXpVYPSWRL7j6cg4vnTpIuS8lOyz/q18zQle O7H59ckS5mhd/KbM21FZRr/fInq5uwCw8Zehga ";
-    //Restore Me
-    int firstDuckPosition = 299;
-    int secondDuckPosition = 511;
-    double drivePowerScale = 1;
-    double theta1 = 0;
-
-    boolean isCollecting = false;
-    boolean g1AP = false;
-    boolean g2BL = false;
-
     private static final int STOP_ROBOT_TIME = 1000;
-    //TestRobotConfig testRobotConfig = new TestRobotConfig();
-    int a = 0;
 
-    @Override
-    public void runOpMode() throws InterruptedException {
-        Robot r = new Robot(this);
-        Autonomous_Vision a = new Autonomous_Vision();
-        /*if(label.getRight() && recognition.getBottom <= 300){
-            r.arm(1,200);
-        }else if (recognition.getRight() && recognition.getBottom >= 400){
-            r.arm(2,200);
-        }else{
-            r.arm(4,200);
-        }*/
-        r.DuckSpin = hardwareMap.dcMotor.get("DuckSpin");
-        r.mtrFrontRight = hardwareMap.dcMotor.get("mtrFrontRight");
-        r.mtrFrontLeft = hardwareMap.dcMotor.get("mtrFrontLeft");
-        r.mtrBackLeft = hardwareMap.dcMotor.get("mtrBackLeft");
-        r.mtrBackRight = hardwareMap.dcMotor.get("mtrBackRight");
-        r.pullArm = hardwareMap.dcMotor.get("pullArm");
-        r.claw = hardwareMap.servo.get("claw");
-
-        r.mtrFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        r.mtrFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        r.mtrBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        r.mtrBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        r.pullArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        r.mtrFrontRight.setZeroPowerBehavior(BRAKE);
-        r.mtrFrontLeft.setZeroPowerBehavior(BRAKE);
-        r.mtrBackLeft.setZeroPowerBehavior(BRAKE);
-        r.mtrBackRight.setZeroPowerBehavior(BRAKE);
-        r.pullArm.setZeroPowerBehavior(FLOAT);
-        r.mtrFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        r.mtrFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        r.mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        r.mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        r.pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    public void Blue1_Position1(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  1, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(1, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
         r.claw(true);
-        waitForStart();
-        int duck = 1;
-        if (duck == 1){
-            a.Blue1_Position1(r);
-        }else if (duck == 2){
-            a.Blue1_Position2(r);
-        }else if(duck == 3){
-            a.Blue1_Position3(r);
-        }
+    }
+    public void Blue1_Position2(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  2, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(2, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Blue1_Position3(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  4, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(4, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Blue2_Position1(Robot r){
+        r.claw(false);
+        r.opMode.sleep (STOP_ROBOT_TIME);
+        r.arm(1, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(1, 1000);
+        r.opMode.sleep (STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Blue2_Position2(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(2, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(2, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Blue2_Position3(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(4, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(4, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
 
-
-        /*r.claw(false);
-        sleep(STOP_ROBOT_TIME);
-        r.arm(1,300);
-        r.driveEncodersInch(.1,5);
-        sleep(STOP_ROBOT_TIME);
-        r.turnEncodersDegree(.1,78);
-        sleep(STOP_ROBOT_TIME);
-        r.driveEncodersInch(.1,-28);
-        sleep(STOP_ROBOT_TIME);
-        r.mtrBackLeft.setPower(-0.07);
-        r.mtrFrontLeft.setPower(-0.07);
-        r.duckspinner(false,2150, 0.3);
-        r.mtrBackLeft.setPower(0);
-        r.mtrFrontLeft.setPower(0);
-        sleep(STOP_ROBOT_TIME);
-        r.driveEncodersInch(.1,4);
-        sleep(STOP_ROBOT_TIME);
-        r.turnEncodersDegree(.25,-30);
-        sleep(STOP_ROBOT_TIME);
-        r.driveEncodersInch(.1,12);
-        r.turnEncodersDegree(.25,90);
-        sleep(STOP_ROBOT_TIME);
-        r.driveEncodersInch(.1, -19);
-        sleep(STOP_ROBOT_TIME);
-        r.turnEncodersDegree(.25,-28 );
-        sleep(STOP_ROBOT_TIME);
-        r.driveBackTimed(-.1,30000);
-
-
-
-*/
+    }
+    public void Red1_Position1(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  1, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(1, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Red1_Position2(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  2, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(2, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Red1_Position3(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  4, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(4, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Red2_Position1(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(1, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.2,59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(1, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Red2_Position2(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(2, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.2,59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(2, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Red2_Position3(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(4, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.2,59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(4, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
     }
 }
