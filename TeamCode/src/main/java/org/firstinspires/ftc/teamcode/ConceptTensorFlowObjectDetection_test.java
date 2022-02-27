@@ -65,13 +65,20 @@ public class ConceptTensorFlowObjectDetection_test extends LinearOpMode {
    *  FreightFrenzy_BC.tflite  0: Ball,  1: Cube
    *  FreightFrenzy_DM.tflite  0: Duck,  1: Marker
    */
-    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
-    private static final String[] LABELS = {
+    //private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
+    /*private static final String[] LABELS = {
       "Ball",
       "Cube",
       "Duck",
       "Marker"
+    };*/
+  private static final String TFOD_MODEL_ASSET = "model_20220226_192255.tflite";
+    private static final String[] LABELS = {
+            "Block",
+            "Duck",
+            "Icon"
     };
+
     /* private static final String TFOD_MODEL_ASSET = "model_quant.tflite";
     private static final String[] LABELS = {
             "Icon",

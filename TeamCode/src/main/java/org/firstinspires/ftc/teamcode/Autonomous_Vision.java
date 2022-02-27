@@ -25,13 +25,20 @@ public class Autonomous_Vision {
          *  FreightFrenzy_BC.tflite  0: Ball,  1: Cube
          *  FreightFrenzy_DM.tflite  0: Duck,  1: Marker
          */
-        private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
+        private static final String TFOD_MODEL_ASSET = "model_20220226_192255.tflite";
         private static final String[] LABELS = {
+                "Duck",
+                "Icon",
+                "Block"
+        };
+
+        //private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
+        /*private static final String[] LABELS = {
                 "Ball",
                 "Cube",
                 "Duck",
                 "Marker"
-        };
+        };*/
 
 
         /*
