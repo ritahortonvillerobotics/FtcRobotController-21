@@ -65,19 +65,19 @@ public class ConceptTensorFlowObjectDetection_test extends LinearOpMode {
    *  FreightFrenzy_BC.tflite  0: Ball,  1: Cube
    *  FreightFrenzy_DM.tflite  0: Duck,  1: Marker
    */
-    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
+    /*private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
     private static final String[] LABELS = {
       "Ball",
       "Cube",
       "Duck",
       "Marker"
-    };
-    /* private static final String TFOD_MODEL_ASSET = "model_quant.tflite";
+    };*/
+    private static final String TFOD_MODEL_ASSET = "model_unquant.tflite";
     private static final String[] LABELS = {
             "Icon",
             "Duck",
             "Block"
-    };*/
+    };
 
     /*
      * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
@@ -165,7 +165,7 @@ public class ConceptTensorFlowObjectDetection_test extends LinearOpMode {
      * Initialize the Vuforia localization engine.
      */
     private void initVuforia() {
-         /*
+        /*
          * Configure Vuforia by creating a Parameter object, and passing it to the Vuforia engine.
          */
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
