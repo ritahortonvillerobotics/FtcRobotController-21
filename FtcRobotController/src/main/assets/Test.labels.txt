@@ -1,5 +1,0 @@
- Icon
-ftcduck
-one
-two
-block
