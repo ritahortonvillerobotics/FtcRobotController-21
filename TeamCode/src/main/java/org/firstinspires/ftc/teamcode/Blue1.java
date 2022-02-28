@@ -230,7 +230,8 @@ public class Blue1 extends LinearOpMode {
                // a.Blue1_Position3(r);
             //}
 
-
+            r.claw(true);
+            waitForStart();
             r.claw(false);
             sleep(STOP_ROBOT_TIME);
             r.arm(1, 300);
