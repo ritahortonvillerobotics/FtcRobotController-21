@@ -27,7 +27,7 @@ public class Robot {
     public static final double WHEEL_CIRCUMFERENCE = Math.PI*WHEEL_DIAMETER;
     public static final double TURNING_DIAMETER = 17;
     public static final double TURNING_CIRCUMFERENCE = Math.PI*TURNING_DIAMETER;
-
+    private static final int STOP_ROBOT_TIME = 1000;
 
     Orientation lastAngles = new Orientation();
     double                  globalAngle, imupower = .30,   correction;
@@ -225,6 +225,175 @@ public class Robot {
     }
 
 
+    public void Blue1_Position1(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  1, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(1, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Blue1_Position2(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  2, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(2, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Blue1_Position3(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  4, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(4, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Blue2_Position1(Robot r){
+        r.claw(false);
+        r.opMode.sleep (STOP_ROBOT_TIME);
+        r.arm(1, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(1, 1000);
+        r.opMode.sleep (STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Blue2_Position2(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(2, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(2, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Blue2_Position3(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(4, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-30);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(4, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+
+    }
+    public void Red1_Position1(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  1, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(1, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Red1_Position2(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  2, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(2, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Red1_Position3(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(  4, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.5,-59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(4, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Red2_Position1(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(1, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.2,59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(1, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Red2_Position2(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(2, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.2,59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(2, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
+    public void Red2_Position3(Robot r){
+        r.claw(false);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.arm(4, 1000);
+        r.driveEncodersInch(.1,21);
+        //sleep(2000);
+        r.turnEncodersDegree(.2,59);
+        //sleep(2000);
+        r.driveEncodersInch(.1, 8);
+        //sleep(2000);
+        r.arm(4, 1000);
+        r.opMode.sleep(STOP_ROBOT_TIME);
+        r.claw(true);
+    }
     public void driveForwardTimed(double power, long timems) {
         mtrFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         mtrFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
