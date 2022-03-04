@@ -170,7 +170,7 @@ public class Blue1 extends LinearOpMode {
         private DcMotor mtrBackLeft;
         private DcMotor pullArm;
         public Servo claw;
-        //private static final String VUFORIA_KEY = "Ae4Y1tr/////AAABmUOIhh5VUERBieW2UEGVyT2AGvBs+tqZimMoeJTBL57NfKJQjp9v+D/teyPEUYRfVkkTnyZEQGfCewAz0dZlwLkfxcfyWDbEBz33yGrmSEZY7WleEqYVt1P3Eewq1wFWHKxosHyETLU+Vs2XfoKtGXJou46WMNSofNvh4CvLU1bYwwA4Yr9nZ7xbgEySOopKhfXujf1XMqKcmgag7jXEj9WaEUY+7ehRq1A8hKtQjYb2YlrKC5zNZSeiBBTBmYjTbl7Zhn1QxYfOPKWlxZ9tD1/6/OwCSAO/nWwXpVYPSWRL7j6cg4vnTpIuS8lOyz/q18zQle O7H59ckS5mhd/KbM21FZRr/fInq5uwCw8Zehga ";
+        private static final String VUFORIA_KEY = "Ae4Y1tr/////AAABmUOIhh5VUERBieW2UEGVyT2AGvBs+tqZimMoeJTBL57NfKJQjp9v+D/teyPEUYRfVkkTnyZEQGfCewAz0dZlwLkfxcfyWDbEBz33yGrmSEZY7WleEqYVt1P3Eewq1wFWHKxosHyETLU+Vs2XfoKtGXJou46WMNSofNvh4CvLU1bYwwA4Yr9nZ7xbgEySOopKhfXujf1XMqKcmgag7jXEj9WaEUY+7ehRq1A8hKtQjYb2YlrKC5zNZSeiBBTBmYjTbl7Zhn1QxYfOPKWlxZ9tD1/6/OwCSAO/nWwXpVYPSWRL7j6cg4vnTpIuS8lOyz/q18zQle O7H59ckS5mhd/KbM21FZRr/fInq5uwCw8Zehga ";
         //Restore Me
         int firstDuckPosition = 299;
         int secondDuckPosition = 511;
@@ -188,7 +188,7 @@ public class Blue1 extends LinearOpMode {
         @Override
         public void runOpMode() throws InterruptedException {
             Robot r = new Robot(this);
-            Autonomous_Vision a = new Autonomous_Vision();
+            //Autonomous_Vision a = new Autonomous_Vision();
         /*if(label.getRight() && recognition.getBottom <= 300){
             r.arm(1,200);
         }else if (recognition.getRight() && recognition.getBottom >= 400){
@@ -231,7 +231,6 @@ public class Blue1 extends LinearOpMode {
             //}
 
             r.claw(true);
-            waitForStart();
             r.claw(false);
             sleep(STOP_ROBOT_TIME);
             r.arm(1, 300);
