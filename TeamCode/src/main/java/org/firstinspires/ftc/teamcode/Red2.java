@@ -65,6 +65,7 @@ public class Red2 extends LinearOpMode {
         r.mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         r.mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         r.pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         r.claw(false);
         waitForStart();
         r.claw(true);
@@ -72,7 +73,7 @@ public class Red2 extends LinearOpMode {
         r.arm(4, 1000);
         r.driveEncodersInch(.1,21);
         //sleep(2000);
-        r.turnEncodersDegree(.2,59);
+        r.turnEncodersDegree(.1,59);
         //sleep(2000);
         r.driveEncodersInch(.1, 8);
         //sleep(2000);
@@ -81,13 +82,14 @@ public class Red2 extends LinearOpMode {
         r.claw(false);
         r.driveEncodersInch(.1, -1);
         sleep(1000);
-        r.turnEncodersDegree(.2, -30);
+        r.turnEncodersDegree(.1, -30);
         r.arm(3,500);
         r.arm(2,500);
         r.arm(1, 500);
         r.driveEncodersInch(.1, -15);
-        r.turnEncodersDegree(.2, -80);
+        r.turnEncodersDegree(.1, -80);
         r.driveEncodersInch(.3,36);
+        r.arm(0,500);
 
     }
 }
