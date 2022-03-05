@@ -58,7 +58,7 @@ public class Blue_Redo extends LinearOpMode {
             r.mtrBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             r.mtrBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             r.pullArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            r.claw(true);
+            r.claw(false);
             waitForStart();
             //int duck = 1;
             //if (duck == 1) {
