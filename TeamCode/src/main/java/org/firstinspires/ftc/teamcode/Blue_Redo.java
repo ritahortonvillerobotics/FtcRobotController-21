@@ -69,18 +69,19 @@ public class Blue_Redo extends LinearOpMode {
             // a.Blue1_Position3(r);
             //}
 
-            r.claw(true);
             r.claw(false);
+            r.claw(true);
             sleep(STOP_ROBOT_TIME);
             r.arm(1, 300);
             r.driveEncodersInch(.1, 6);
             sleep(STOP_ROBOT_TIME);
-            r.turnEncodersDegree(.1, 78);
+            r.turnEncodersDegree(.05, 78);
             sleep(STOP_ROBOT_TIME);
             r.driveEncodersInch(.1, -28);
             sleep(STOP_ROBOT_TIME);
             r.mtrBackLeft.setPower(-0.07);
             r.mtrFrontLeft.setPower(-0.07);
+            /*
             r.duckspinner(false, 2150, 0.3);
             r.mtrBackLeft.setPower(0);
             r.mtrFrontLeft.setPower(0);
@@ -97,6 +98,6 @@ public class Blue_Redo extends LinearOpMode {
             r.turnEncodersDegree(.25, -28);
             sleep(STOP_ROBOT_TIME);
             r.driveBackTimed(-.1, 30000);
-
+*/
         }
 }
